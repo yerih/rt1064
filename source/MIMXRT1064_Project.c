@@ -6,7 +6,7 @@
  */
 
 /**
- * @file    MIMXRT1064_Project.cpp
+ * @file    MIMXRT1064_Project.c
  * @brief   Application entry point.
  */
 #include <stdio.h>
@@ -15,6 +15,8 @@
 #include "pin_mux.h"
 #include "clock_config.h"
 #include "fsl_debug_console.h"
+#include "task.h"
+#include "start.h"
 /* TODO: insert other include files here. */
 
 /* TODO: insert other definitions and declarations here. */
@@ -34,15 +36,17 @@ int main(void) {
     BOARD_InitDebugConsole();
 #endif
 
-    PRINTF("Hello World\r\n");
+    printf("Hello World\r\n");
+    start_main();
+
+    vTaskStartScheduler();
 
     /* Force the counter to be placed into memory. */
     volatile static int i = 0 ;
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
-    	PRINTF("Hello World\r\n");
+    	printf("Hello World %d\r\n", i);
         i++ ;
-
         /* 'Dummy' NOP to allow source level single stepping of
             tight while() loop */
         __asm volatile ("nop");

@@ -16,44 +16,20 @@ RM := rm -rf
 -include sdmmc/src/subdir.mk
 -include sdmmc/osa/subdir.mk
 -include sdmmc/host/subdir.mk
+-include freertos/freertos-kernel/portable/MemMang/subdir.mk
 -include freertos/freertos-kernel/portable/GCC/ARM_CM4F/subdir.mk
 -include freertos/freertos-kernel/subdir.mk
--include fatfs/source/fsl_sd_disk/subdir.mk
--include fatfs/source/subdir.mk
 -include drivers/subdir.mk
 -include device/subdir.mk
 -include component/uart/subdir.mk
 -include component/serial_manager/subdir.mk
 -include component/osa/subdir.mk
+-include component/mem_manager/subdir.mk
 -include component/lists/subdir.mk
 -include board/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(strip $(C++M_DEPS)),)
--include $(C++M_DEPS)
-endif
-ifneq ($(strip $(C++_DEPS)),)
--include $(C++_DEPS)
-endif
-ifneq ($(strip $(CCM_DEPS)),)
--include $(CCM_DEPS)
-endif
-ifneq ($(strip $(CC_DEPS)),)
--include $(CC_DEPS)
-endif
-ifneq ($(strip $(CPP_DEPS)),)
--include $(CPP_DEPS)
-endif
-ifneq ($(strip $(CXXM_DEPS)),)
--include $(CXXM_DEPS)
-endif
-ifneq ($(strip $(CXX_DEPS)),)
--include $(CXX_DEPS)
-endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
-endif
-ifneq ($(strip $(C_UPPER_DEPS)),)
--include $(C_UPPER_DEPS)
 endif
 endif
 
@@ -82,8 +58,8 @@ main-build: MIMXRT1064_Project.axf
 # Tool invocations
 MIMXRT1064_Project.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: MCU C++ Linker'
-	arm-none-eabi-c++ -nostdlib -Xlinker -Map="MIMXRT1064_Project.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T MIMXRT1064_Project_Debug.ld -u _printf_float -o "MIMXRT1064_Project.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	@echo 'Invoking: MCU Linker'
+	arm-none-eabi-gcc -nostdlib -Xlinker -Map="MIMXRT1064_Project.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T MIMXRT1064_Project_Debug.ld -o "MIMXRT1064_Project.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -1,5 +1,5 @@
 source/MIMXRT1064_Project.o source/MIMXRT1064_Project.d: \
- ../source/MIMXRT1064_Project.cpp \
+ ../source/MIMXRT1064_Project.c \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/board.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/clock_config.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_common.h \
@@ -19,6 +19,7 @@ source/MIMXRT1064_Project.o source/MIMXRT1064_Project.d: \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_gpio.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_clock.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/peripherals.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_lpuart.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/pin_mux.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/clock_config.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\utilities/fsl_debug_console.h \
@@ -31,7 +32,25 @@ source/MIMXRT1064_Project.o source/MIMXRT1064_Project.d: \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/portable.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/deprecated_definitions.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\portable\GCC\ARM_CM4F/portmacro.h \
- C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/mpu_wrappers.h
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/mpu_wrappers.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/task.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/list.h \
+ ../source/start.h ../source/global.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/semphr.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/queue.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/task.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\template\usdhc/sdmmc_config.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\host/fsl_sdmmc_host.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\osa/fsl_sdmmc_osa.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\osa/fsl_os_abstraction.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\osa/fsl_os_abstraction_config.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\lists/fsl_component_generic_list.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\osa/fsl_os_abstraction_free_rtos.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/event_groups.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/timers.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_usdhc.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_common.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_spec.h
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/board.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/clock_config.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_common.h:
@@ -51,6 +70,7 @@ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Projec
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_gpio.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_clock.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/peripherals.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_lpuart.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/pin_mux.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/clock_config.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\utilities/fsl_debug_console.h:
@@ -64,3 +84,22 @@ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Projec
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/deprecated_definitions.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\portable\GCC\ARM_CM4F/portmacro.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/mpu_wrappers.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/task.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/list.h:
+../source/start.h:
+../source/global.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/semphr.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/queue.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/task.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\template\usdhc/sdmmc_config.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\host/fsl_sdmmc_host.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\osa/fsl_sdmmc_osa.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\osa/fsl_os_abstraction.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\osa/fsl_os_abstraction_config.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\lists/fsl_component_generic_list.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\osa/fsl_os_abstraction_free_rtos.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/event_groups.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/timers.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_usdhc.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_common.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_spec.h:

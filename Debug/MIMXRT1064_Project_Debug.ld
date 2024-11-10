@@ -6,7 +6,7 @@
  * Generated linker script file for MIMXRT1064xxxxA
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v24.9 [Build 25] [2024-09-26] on Nov 9, 2024, 8:38:13 AM
+ * MCUXpresso IDE v24.9 [Build 25] [2024-09-26] on Nov 9, 2024, 8:54:19 PM
  */
 
 INCLUDE "MIMXRT1064_Project_Debug_library.ld"
@@ -84,36 +84,6 @@ SECTIONS
        KEEP(*freertos*/tasks.o(.rodata*)) /* FreeRTOS Debug Config */
        *(.rodata .rodata.* .constdata .constdata.*)
        . = ALIGN(4);
-            /* C++ constructors etc */
-            . = ALIGN(4);
-            KEEP(*(.init))
-            
-            . = ALIGN(4);
-            __preinit_array_start = .;
-            KEEP (*(.preinit_array))
-            __preinit_array_end = .;
-            
-            . = ALIGN(4);
-            __init_array_start = .;
-            KEEP (*(SORT(.init_array.*)))
-            KEEP (*(.init_array))
-            __init_array_end = .;
-            
-            KEEP(*(.fini));
-            
-            . = ALIGN(4);
-            KEEP (*crtbegin.o(.ctors))
-            KEEP (*(EXCLUDE_FILE (*crtend.o) .ctors))
-            KEEP (*(SORT(.ctors.*)))
-            KEEP (*crtend.o(.ctors))
-            
-            . = ALIGN(4);
-            KEEP (*crtbegin.o(.dtors))
-            KEEP (*(EXCLUDE_FILE (*crtend.o) .dtors))
-            KEEP (*(SORT(.dtors.*)))
-            KEEP (*crtend.o(.dtors))
-            . = ALIGN(4);
-            /* End C++ */
     } > PROGRAM_FLASH
     /*
      * for exception handling/unwind - some Newlib functions (in common

@@ -15,8 +15,7 @@ sdmmc/template/usdhc/sdmmc_config.o sdmmc/template/usdhc/sdmmc_config.d: \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_common_arm.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_clock.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_common.h \
- C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sd.h \
- C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_common.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/clock_config.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\host/fsl_sdmmc_host.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\osa/fsl_sdmmc_osa.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\osa/fsl_os_abstraction.h \
@@ -37,9 +36,8 @@ sdmmc/template/usdhc/sdmmc_config.o sdmmc/template/usdhc/sdmmc_config.d: \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/event_groups.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/timers.h \
  C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_usdhc.h \
- C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_spec.h \
- C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/clock_config.h \
- C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_common.h
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_common.h \
+ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_spec.h
 ../sdmmc/template/usdhc/sdmmc_config.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_common.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\device/fsl_device_registers.h:
@@ -55,8 +53,7 @@ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Projec
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_common_arm.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_clock.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_common.h:
-C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sd.h:
-C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_common.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/clock_config.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\host/fsl_sdmmc_host.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\osa/fsl_sdmmc_osa.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\component\osa/fsl_os_abstraction.h:
@@ -77,6 +74,5 @@ C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Projec
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/event_groups.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\freertos\freertos-kernel\include/timers.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_usdhc.h:
-C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_spec.h:
-C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\board/clock_config.h:
 C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_common.h:
+C:\Personal\ projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\sdmmc\inc/fsl_sdmmc_spec.h:

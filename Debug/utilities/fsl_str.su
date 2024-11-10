@@ -11,11 +11,12 @@
 ../utilities/fsl_str.c:485:17:ScanIsWhiteSpace	24	static
 ../utilities/fsl_str.c:495:17:ScanIgnoreWhiteSpace	24	static
 ../utilities/fsl_str.c:510:16:ConvertRadixNumToString	64	static
+../utilities/fsl_str.c:658:16:ConvertFloatRadixNumToString	112	static
 ../utilities/fsl_str.c:765:13:StrFormatExaminedi	16	static
 ../utilities/fsl_str.c:787:13:StrFormatExaminexX	16	static
 ../utilities/fsl_str.c:809:13:StrFormatExamineobpu	16	static
 ../utilities/fsl_str.c:830:16:ConvertPrecisionWidthToLength	24	static
-../utilities/fsl_str.c:863:5:StrFormatPrintf	144	static
+../utilities/fsl_str.c:863:5:StrFormatPrintf	152	static
 ../utilities/fsl_str.c:1115:16:StrFormatScanIsFormatStarting	24	static
 ../utilities/fsl_str.c:1134:16:StrFormatScanGetBase	16	static
 ../utilities/fsl_str.c:1157:16:StrFormatScanCheckSymbol	24	static

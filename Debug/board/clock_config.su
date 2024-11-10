@@ -8,6 +8,6 @@ C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project
 C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_clock.h:1731:20:CLOCK_SetPllBypass	24	static
 C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_iomuxc.h:1347:20:IOMUXC_SetSaiMClkClockSource	24	static
 C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_iomuxc.h:1407:20:IOMUXC_MQSConfig	24	static
-../board/clock_config.c:47:6:BOARD_InitBootClocks	8	static
-../board/clock_config.c:178:6:BOARD_BootClockRUN	16	static
-../board/clock_config.c:639:6:BOARD_BootClockRUN_528M	16	static
+../board/clock_config.c:40:6:BOARD_InitBootClocks	8	static
+../board/clock_config.c:171:6:BOARD_BootClockRUN	16	static
+../board/clock_config.c:632:6:BOARD_BootClockRUN_528M	16	static

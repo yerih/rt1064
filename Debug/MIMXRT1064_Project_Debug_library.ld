@@ -6,17 +6,12 @@
  * Generated linker script file for MIMXRT1064xxxxA
  * Created from library.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v24.9 [Build 25] [2024-09-26] on Nov 9, 2024, 8:38:13 AM
+ * MCUXpresso IDE v24.9 [Build 25] [2024-09-26] on Nov 9, 2024, 8:54:19 PM
  */
 
 GROUP (
+  "libcr_semihost_nf.a"
+  "libcr_c.a"
+  "libcr_eabihelpers.a"
   "libgcc.a"
-  "libc_nano.a"
-  "libstdc++_nano.a"
-  "libm.a"
-  "libcr_newlib_semihost.a"
-  "crti.o"
-  "crtn.o"
-  "crtbegin.o"
-  "crtend.o"
 )

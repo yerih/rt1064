@@ -3,6 +3,7 @@ C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project
 C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_clock.h:1434:24:CLOCK_GetMux	16	static
 C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_clock.h:1486:24:CLOCK_GetDiv	16	static
 C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\drivers/fsl_clock.h:1547:24:CLOCK_GetOscFreq	4	static
+C:\Personal projects\Edrum\nxp\rt1064\testing_new_ide_version\MIMXRT1064_Project\utilities/fsl_debug_console.h:154:24:DbgConsole_Init	24	static
 ../board/board.c:25:10:BOARD_DebugConsoleSrcFreq	24	static
 ../board/board.c:44:6:BOARD_InitDebugConsole	16	static
 ../board/board.c:249:6:BOARD_ConfigMPU	48	static
