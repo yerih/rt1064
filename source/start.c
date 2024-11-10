@@ -16,7 +16,7 @@ void start_initModules(void)
 
 void start_main(void)
 {
-
+	printf("creating task...\r\n");
     if (pdPASS !=
         xTaskCreate(start_mainThread, "main thread", 2048, NULL, (configMAX_PRIORITIES - 5U), &fileAccessTaskHandle1))
     {
@@ -29,7 +29,8 @@ void start_main(void)
 
 static void start_mainThread(void* arg)
 {
-	xTaskNotifyWait(ULONG_MAX, ULONG_MAX, NULL, portMAX_DELAY);
+	printf("task waiting...\r\n");
+//	xTaskNotifyWait(ULONG_MAX, ULONG_MAX, NULL, portMAX_DELAY);
 	printf("main thread working\r\n");
 //	test_playBullet();
 //	audio_play("bullet.wav");
