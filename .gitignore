@@ -17,3 +17,4 @@ Debug/board/pin_mux.d
 *.d
 *.map
 *.su
+*.o
