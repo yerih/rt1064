@@ -3,15 +3,17 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
 #include "pin_mux.h"
 #include "fsl_gpio.h"
 
 //#include "fsl_sd.h"
 #include "fsl_debug_console.h"
-//#include "ff.h"
+#include "ff.h"
 //#include "diskio.h"
 //#include "fsl_sd_disk.h"
 #include "FreeRTOS.h"
+#include "FreeRTOSConfig.h"
 #include "semphr.h"
 #include "task.h"
 #include "limits.h"
@@ -28,7 +30,7 @@
 #include "peripherals.h"
 //#include "audio_config.h"
 //#include "sai_os.h"
-//#include "sd_os.h"
+#include "sd_os.h"
 //#include "test.h"
 //#include "adc_os.h"
 #include "start.h"
@@ -39,8 +41,9 @@
 //#include "audio_engine.h"
 //#include "audio.h"
 //#include "pad.h"
-//#include "file_os.h"
-//#include "logApp.h"
+#include "file_os.h"
+#include "test_file.h"
+#include "logApp.h"
 //#include "button.h"
 
 
@@ -54,6 +57,7 @@
 //extern FATFS g_fileSystem; /* File system object */
 //extern TaskHandle_t fileAccessTaskHandle1;
 //extern FIL g_fileObject1;  /* File object */
+extern sd_card_t g_sd;
 
 #endif
 

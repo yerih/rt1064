@@ -40,6 +40,7 @@ void led_toggle()
 
 void test_led()
 {
+	printf("test_led(): running...\r\n");
 	while(1)
 	{
 		led_toggle();

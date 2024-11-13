@@ -12,6 +12,8 @@
 #include "fsl_common.h"
 #include "fsl_lpuart.h"
 #include "fsl_clock.h"
+#include "ff.h"
+#include "diskio.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -41,6 +43,10 @@ extern uint8_t BOARD_LPUART1_rxBuffer[BOARD_LPUART1_RX_BUFFER_SIZE];
 extern lpuart_transfer_t BOARD_LPUART1_rxTransfer;
 extern uint8_t BOARD_LPUART1_txBuffer[BOARD_LPUART1_TX_BUFFER_SIZE];
 extern lpuart_transfer_t BOARD_LPUART1_txTransfer;
+/* FATFS System object */
+extern FATFS FATFS_System_0;
+/* FATFS File object */
+extern FIL FATFS_File_0;
 
 /***********************************************************************************************************************
  * Initialization functions

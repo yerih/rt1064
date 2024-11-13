@@ -36,7 +36,10 @@ int main(void) {
     BOARD_InitDebugConsole();
 #endif
 
-    printf("Hello World\r\n");
+
+    printf("System is initialized.\r\n");
+    start_initModules();
+
     start_main();
 
     vTaskStartScheduler();

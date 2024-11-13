@@ -230,6 +230,11 @@
                   <enableClock>true</enableClock>
                </options>
                <dependencies>
+                  <dependency resourceType="Peripheral" resourceId="USDHC1" description="Peripheral USDHC1 signals are routed in the Pins Tool, but the peripheral is not initialized in the Peripherals Tool." problem_level="1" source="Pins:BOARD_InitPins">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
                   <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins">
                      <feature name="enabled" evaluation="equal" configuration="core0">
                         <data>true</data>
@@ -254,6 +259,8 @@
                         <pin_feature name="slew_rate" value="Fast"/>
                      </pin_features>
                   </pin>
+                  <pin peripheral="USDHC1" signal="usdhc_clk" pin_num="J3" pin_signal="GPIO_SD_B0_01"/>
+                  <pin peripheral="USDHC1" signal="usdhc_vselect" pin_num="C14" pin_signal="GPIO_B1_14"/>
                </pins>
             </function>
             <function name="BOARD_InitDEBUG_UART">
@@ -705,12 +712,11 @@
                   </dependency>
                </dependencies>
                <pins>
+                  <pin peripheral="USDHC1" signal="usdhc_cmd" pin_num="J4" pin_signal="GPIO_SD_B0_00"/>
+                  <pin peripheral="USDHC1" signal="usdhc_data, 0" pin_num="J1" pin_signal="GPIO_SD_B0_02"/>
+                  <pin peripheral="USDHC1" signal="usdhc_data, 1" pin_num="K1" pin_signal="GPIO_SD_B0_03"/>
                   <pin peripheral="USDHC1" signal="usdhc_data, 3" pin_num="J2" pin_signal="GPIO_SD_B0_05"/>
                   <pin peripheral="USDHC1" signal="usdhc_data, 2" pin_num="H2" pin_signal="GPIO_SD_B0_04"/>
-                  <pin peripheral="USDHC1" signal="usdhc_data, 1" pin_num="K1" pin_signal="GPIO_SD_B0_03"/>
-                  <pin peripheral="USDHC1" signal="usdhc_data, 0" pin_num="J1" pin_signal="GPIO_SD_B0_02"/>
-                  <pin peripheral="USDHC1" signal="usdhc_cmd" pin_num="J4" pin_signal="GPIO_SD_B0_00"/>
-                  <pin peripheral="USDHC1" signal="usdhc_clk" pin_num="J3" pin_signal="GPIO_SD_B0_01"/>
                </pins>
             </function>
             <function name="BOARD_InitHyperFlash">
@@ -1206,6 +1212,16 @@
                   <data type="Version">2.8.1</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="middleware.fatfs" description="FAT File System stack is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="middleware.fatfs" description="An unsupported version of the FAT File System stack in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="greaterOrEqual">
+                  <data type="Version" maxValue="0.15.9">0.14.0</data>
+               </feature>
+            </dependency>
             <dependency resourceType="Tool" resourceId="Clocks" description="The Clocks tool is required by the Peripherals tool, but it is disabled." problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data>true</data>
@@ -1215,6 +1231,7 @@
          <generated_project_files>
             <file path="board/peripherals.c" update_enabled="true"/>
             <file path="board/peripherals.h" update_enabled="true"/>
+            <file path="source/ffconf.h" update_enabled="true"/>
          </generated_project_files>
          <peripherals_profile>
             <processor_version>16.3.0</processor_version>
@@ -1236,6 +1253,11 @@
                   </dependency>
                   <dependency resourceType="PeripheralUnifiedSignal" resourceId="LPUART1.uart_rx" description="Signal RX is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="routed" evaluation="equal">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="middleware.fatfs.sd" description="The fsl_sd_disk driver is missing in the project (required for FATFS)." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="enabled" evaluation="equal">
                         <data type="Boolean">true</data>
                      </feature>
                   </dependency>
@@ -1294,6 +1316,102 @@
                            <setting name="enable_priority" value="false"/>
                            <setting name="priority" value="0"/>
                         </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="FATFS" uuid="34e73238-319c-41cb-8e0d-30cc3885c94c" type="fatfs" type_id="fatfs_0.14.0" mode="general" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="init_config">
+                        <struct name="initConfig">
+                           <setting name="initPartitionsStr" value="false"/>
+                           <array name="multiplePartitions">
+                              <struct name="0">
+                                 <setting name="Volume" value="0"/>
+                                 <setting name="Partition" value="autoDetect"/>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="Volume" value="0"/>
+                                 <setting name="Partition" value="autoDetect"/>
+                              </struct>
+                           </array>
+                           <setting name="enablePhysicalLayerInit" value="false"/>
+                           <struct name="diskConfig">
+                              <setting name="initFunctionID" value="FATFS_DiskInit"/>
+                           </struct>
+                           <setting name="initResultObject" value="false"/>
+                           <setting name="resultName" value="FATFS_Result"/>
+                           <array name="fatfsObjects">
+                              <struct name="0">
+                                 <setting name="objID" value="FATFS_System_0"/>
+                                 <setting name="diskMount" value="true"/>
+                                 <setting name="mountPath" value="0:"/>
+                                 <setting name="mountInitOpt" value="true"/>
+                              </struct>
+                           </array>
+                           <array name="filObjects">
+                              <struct name="0">
+                                 <setting name="objID" value="FATFS_File_0"/>
+                              </struct>
+                           </array>
+                           <array name="filInfoObjects"/>
+                           <array name="dirObjects"/>
+                        </struct>
+                     </config_set>
+                     <config_set name="ff_config">
+                        <setting name="revisionID" value="rev15_0"/>
+                        <setting name="MSDKadaptation" value="SD_DISK_ENABLE"/>
+                        <struct name="functionConfig">
+                           <setting name="FF_FS_READONLY" value="false"/>
+                           <setting name="FF_FS_MINIMIZE" value="level1"/>
+                           <setting name="FF_USE_FIND" value="enableDirRead"/>
+                           <setting name="FF_USE_MKFS" value="true"/>
+                           <setting name="FF_USE_FASTSEEK" value="true"/>
+                           <setting name="FF_USE_EXPAND" value="true"/>
+                           <setting name="FF_USE_CHMOD" value="true"/>
+                           <setting name="FF_USE_LABEL" value="true"/>
+                           <setting name="FF_USE_FORWARD" value="true"/>
+                           <setting name="FF_USE_STRFUNC" value="enableWithConversion"/>
+                           <setting name="FF_PRINT_LLI" value="true"/>
+                           <setting name="FF_PRINT_FLOAT" value="enableFloat"/>
+                        </struct>
+                        <struct name="namespaceConfig">
+                           <setting name="FF_USE_LFN" value="enableLfnHeap"/>
+                           <setting name="FF_MAX_LFN" value="255"/>
+                           <setting name="FF_LFN_BUF" value="LFNID"/>
+                           <setting name="FF_SFN_BUF" value="custom:50"/>
+                           <setting name="FF_LFN_UNICODE" value="UTF8"/>
+                           <setting name="FF_STRF_ENCODE" value="UTF8"/>
+                           <setting name="FF_CODE_PAGE" value="cpUS"/>
+                           <setting name="FF_FS_RPATH" value="enableRP2"/>
+                        </struct>
+                        <struct name="driveConfig">
+                           <setting name="FF_VOLUMES" value="1"/>
+                           <setting name="FF_STR_VOLUME_ID" value="numericId"/>
+                           <array name="volumes">
+                              <struct name="0">
+                                 <setting name="volumeStr" value="SD"/>
+                              </struct>
+                           </array>
+                           <setting name="FF_MULTI_PARTITION" value="false"/>
+                           <setting name="FF_MIN_SS" value="value512"/>
+                           <setting name="FF_MAX_SS" value="value512"/>
+                           <setting name="FF_LBA64" value="false"/>
+                           <setting name="FF_MIN_GPT" value="0x10000000"/>
+                           <setting name="FF_USE_TRIM" value="true"/>
+                        </struct>
+                        <struct name="systemConfig">
+                           <setting name="FF_FS_TINY" value="false"/>
+                           <setting name="FF_FS_EXFAT" value="true"/>
+                           <setting name="FF_FS_NORTC" value="true"/>
+                           <setting name="FF_NORTC_MON" value="1"/>
+                           <setting name="FF_NORTC_MDAY" value="1"/>
+                           <setting name="FF_NORTC_YEAR" value="2022"/>
+                           <set name="FF_FS_NOFSINFO">
+                              <selected/>
+                           </set>
+                           <setting name="FF_FS_LOCK" value="0"/>
+                           <setting name="FF_FS_REENTRANT" value="true"/>
+                           <setting name="FF_FS_TIMEOUT" value="1000"/>
+                        </struct>
+                        <struct name="fatfs_codegenerator"/>
                      </config_set>
                   </instance>
                </instances>
