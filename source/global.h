@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "pin_mux.h"
+#include "fsl_gpio.h"
+
 //#include "fsl_sd.h"
 #include "fsl_debug_console.h"
 //#include "ff.h"
@@ -29,6 +32,7 @@
 //#include "test.h"
 //#include "adc_os.h"
 #include "start.h"
+#include "led.h"
 //#include "wav.h"
 //#include "audio_utils.h"
 //#include "audio_mix.h"

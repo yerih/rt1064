@@ -37,6 +37,22 @@ extern "C" {
  */
 void BOARD_InitBootPins(void);
 
+#define BOARD_INITPINS_IOMUXC_GPR_GPR26_GPIO_MUX1_GPIO_SEL_MASK 0x0200U /*!< GPIO1 and GPIO6 share same IO MUX function, GPIO_MUX1 selects one GPIO function: affected bits mask */
+
+/* GPIO_AD_B0_09 (coord F14), LED_BOARD */
+/* Routed pin properties */
+#define BOARD_INITPINS_LED_BOARD_PERIPHERAL                                GPIO1   /*!< Peripheral name */
+#define BOARD_INITPINS_LED_BOARD_SIGNAL                                  gpio_io   /*!< Signal name */
+#define BOARD_INITPINS_LED_BOARD_CHANNEL                                      9U   /*!< Signal channel */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_LED_BOARD_GPIO                                      GPIO1   /*!< GPIO peripheral base pointer */
+#define BOARD_INITPINS_LED_BOARD_GPIO_PIN                                     9U   /*!< GPIO pin number */
+#define BOARD_INITPINS_LED_BOARD_GPIO_PIN_MASK                        (1U << 9U)   /*!< GPIO pin mask */
+#define BOARD_INITPINS_LED_BOARD_PORT                                      GPIO1   /*!< PORT peripheral base pointer */
+#define BOARD_INITPINS_LED_BOARD_PIN                                          9U   /*!< PORT pin number */
+#define BOARD_INITPINS_LED_BOARD_PIN_MASK                             (1U << 9U)   /*!< PORT pin mask */
+
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *

@@ -44,6 +44,9 @@ static void start_mainThread(void* arg)
 //	audioEng_init();
 	OSA_TimeDelay(200);
 
+	test_led();
+
+
 //	audio_play("bullet.wav");
 //	audio_playNoThrd("bullet.wav");
 //	test_playSnareSequence();
