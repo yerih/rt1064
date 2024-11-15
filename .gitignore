@@ -8,3 +8,4 @@
 *.map
 *.su
 *.o
+/Debug/board
