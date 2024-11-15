@@ -23,6 +23,10 @@ extern "C" {
  * Definitions
  **********************************************************************************************************************/
 /* Definitions for BOARD_InitPeripherals functional group */
+/* NVIC interrupt vector ID (number). */
+#define BOARD_INT_0_IRQN USDHC1_IRQn
+/* NVIC interrupt handler identifier. */
+#define BOARD_INT_0_IRQHANDLER USDHC1_IRQHandler
 /* Definition of peripheral ID */
 #define BOARD_LPUART1_PERIPHERAL LPUART1
 /* Definition of the clock source frequency */

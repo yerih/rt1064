@@ -72,7 +72,16 @@ instance:
   - nvic:
     - interrupt_table:
       - 0: []
-    - interrupts: []
+      - 1: []
+    - interrupts:
+      - 0:
+        - channelId: 'int_0'
+        - interrupt_t:
+          - IRQn: 'USDHC1_IRQn'
+          - enable_interrrupt: 'enabled'
+          - enable_priority: 'false'
+          - priority: '0'
+          - enable_custom_name: 'false'
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 
@@ -273,11 +282,19 @@ static void BOARD_FATFS_init(void) {
 /***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
+static void BOARD_InitPeripherals_CommonPostInit(void)
+{
+  /* Enable interrupt BOARD_INT_0_IRQN request in the NVIC */
+  EnableIRQ(BOARD_INT_0_IRQN);
+}
+
 void BOARD_InitPeripherals(void)
 {
   /* Initialize components */
   BOARD_LPUART1_init();
   BOARD_FATFS_init();
+  /* Common post-initialization */
+  BOARD_InitPeripherals_CommonPostInit();
 }
 
 /***********************************************************************************************************************

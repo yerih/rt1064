@@ -36,6 +36,7 @@ void CardDetectTask(void *pvParameters)
 
     BOARD_SD_Config(&g_sd, sd_os_cardDetectTask, BOARD_SDMMC_SD_HOST_IRQ_PRIORITY, NULL);
 
+    printf("CardDetectTask(): board_sd_config() is executed\r\n");
     /* SD host init function */
     if (SD_HostInit(&g_sd) == kStatus_Success)
     {
@@ -44,13 +45,13 @@ void CardDetectTask(void *pvParameters)
             /* take card detect semaphore */
             if (xSemaphoreTake(s_CardDetectSemaphore, portMAX_DELAY) == pdTRUE)
             {
+            	printf("CardDetectTask(): semaph is taken\r\n");
                 if (s_cardInserted != s_cardInsertStatus)
                 {
                     s_cardInserted = s_cardInsertStatus;
 
                     if (s_cardInserted)
                     {
-                        PRINTF("\r\nCard inserted.\r\n");
                         /* power off card */
                         SD_SetCardPower(&g_sd, false);
                         /* power on the card */
@@ -58,6 +59,7 @@ void CardDetectTask(void *pvParameters)
                         /* make file system */
                         if (sd_os_mountDrive() != kStatus_Success)
                         {
+                        	PRINTF("\r\nSDCard is not mounted.\r\n");
                             continue;
                         }
                         xTaskNotifyGive(fileAccessTaskHandle1);
@@ -84,9 +86,10 @@ status_t sd_os_mountDrive(void)
 {
     FRESULT error;
     const TCHAR driverNumberBuffer[3U] = {SDDISK + '0', ':', '/'};
+//    const TCHAR driverNumberBuffer[3U] = {SDDISK + ':', '/'};
     BYTE work[FF_MAX_SS];
 
-    printf("mounting SD...\r\n");
+    printf("mounting SD in driver = %s...\r\n", driverNumberBuffer);
     if (f_mount(&g_fileSystem, driverNumberBuffer, 0U))
     {
         PRINTF("Mount volume failed.\r\n");

@@ -219,6 +219,9 @@
                <pin_label pin_num="K9" pin_signal="NGND_KEL0" label="GND"/>
                <pin_label pin_num="M10" pin_signal="VDD_SNVS_CAP" label="GND"/>
             </pin_labels>
+            <external_user_signals>
+               <properties/>
+            </external_user_signals>
             <power_domains/>
          </pins_profile>
          <functions_list>
@@ -261,6 +264,7 @@
                   </pin>
                   <pin peripheral="USDHC1" signal="usdhc_clk" pin_num="J3" pin_signal="GPIO_SD_B0_01"/>
                   <pin peripheral="USDHC1" signal="usdhc_vselect" pin_num="C14" pin_signal="GPIO_B1_14"/>
+                  <pin peripheral="GPIO2" signal="gpio_io, 28" pin_num="D13" pin_signal="GPIO_B1_12"/>
                </pins>
             </function>
             <function name="BOARD_InitDEBUG_UART">
@@ -1267,8 +1271,20 @@
                      <config_set name="nvic">
                         <array name="interrupt_table">
                            <struct name="0"/>
+                           <struct name="1"/>
                         </array>
-                        <array name="interrupts"/>
+                        <array name="interrupts">
+                           <struct name="0">
+                              <setting name="channelId" value="int_0"/>
+                              <struct name="interrupt_t">
+                                 <setting name="IRQn" value="USDHC1_IRQn"/>
+                                 <setting name="enable_interrrupt" value="enabled"/>
+                                 <setting name="enable_priority" value="false"/>
+                                 <setting name="priority" value="0"/>
+                                 <setting name="enable_custom_name" value="false"/>
+                              </struct>
+                           </struct>
+                        </array>
                      </config_set>
                   </instance>
                   <instance name="LPUART1" uuid="c3f2e6cf-823b-4fca-8f50-e2a50f2bf801" type="lpuart" type_id="lpuart_2.8.1" mode="transfer" peripheral="LPUART1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">

@@ -7,6 +7,7 @@
 
 #include "global.h"
 
+extern TaskHandle_t fileAccessTaskHandle1;
 
 typedef struct st_file_os{
 	char* name;

@@ -38,6 +38,7 @@ extern "C" {
 void BOARD_InitBootPins(void);
 
 #define BOARD_INITPINS_IOMUXC_GPR_GPR26_GPIO_MUX1_GPIO_SEL_MASK 0x0200U /*!< GPIO1 and GPIO6 share same IO MUX function, GPIO_MUX1 selects one GPIO function: affected bits mask */
+#define BOARD_INITPINS_IOMUXC_GPR_GPR27_GPIO_MUX2_GPIO_SEL_MASK 0x10000000U /*!< GPIO2 and GPIO7 share same IO MUX function, GPIO_MUX2 selects one GPIO function: affected bits mask */
 
 /* GPIO_AD_B0_09 (coord F14), LED_BOARD */
 /* Routed pin properties */
@@ -62,6 +63,20 @@ void BOARD_InitBootPins(void);
 /* Routed pin properties */
 #define BOARD_INITPINS_SD0_VSELECT_PERIPHERAL                             USDHC1   /*!< Peripheral name */
 #define BOARD_INITPINS_SD0_VSELECT_SIGNAL                          usdhc_vselect   /*!< Signal name */
+
+/* GPIO_B1_12 (coord D13), SD_CD_SW */
+/* Routed pin properties */
+#define BOARD_INITPINS_SD_CD_SW_PERIPHERAL                                 GPIO2   /*!< Peripheral name */
+#define BOARD_INITPINS_SD_CD_SW_SIGNAL                                   gpio_io   /*!< Signal name */
+#define BOARD_INITPINS_SD_CD_SW_CHANNEL                                      28U   /*!< Signal channel */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_SD_CD_SW_GPIO                                       GPIO2   /*!< GPIO peripheral base pointer */
+#define BOARD_INITPINS_SD_CD_SW_GPIO_PIN                                     28U   /*!< GPIO pin number */
+#define BOARD_INITPINS_SD_CD_SW_GPIO_PIN_MASK                        (1U << 28U)   /*!< GPIO pin mask */
+#define BOARD_INITPINS_SD_CD_SW_PORT                                       GPIO2   /*!< PORT peripheral base pointer */
+#define BOARD_INITPINS_SD_CD_SW_PIN                                          28U   /*!< PORT pin number */
+#define BOARD_INITPINS_SD_CD_SW_PIN_MASK                             (1U << 28U)   /*!< PORT pin mask */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
