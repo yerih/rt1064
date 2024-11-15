@@ -9,3 +9,4 @@
 *.su
 *.o
 /Debug/board
+/Debug
