@@ -2,7 +2,6 @@
 
 #include "file_os.h"
 
-FIL g_fileObject1;
 
 file_os_t fileOs = {
 		.buffer   = NULL,

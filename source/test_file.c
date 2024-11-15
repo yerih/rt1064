@@ -14,9 +14,9 @@ void test_file()
 	fileOs.name = fileName;
 	uint8_t r = 0;
 	if((r = file_open(&fileOs)))
-		printf("error opening file %s: r = %d\r\n", fileOs.name, r);
+		printf("error opening file: %s; r = %d\r\n", fileOs.name, r);
 	else
-		printf("success opening file %s: r = %d\r\n", fileOs.name, r);
+		printf("success opening file: %s; r = %d\r\n", fileOs.name, r);
 }
 
 

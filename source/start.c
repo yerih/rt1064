@@ -9,7 +9,7 @@ void start_initModules(void)
 //	for(int i = 0; i < AUDIO_THRD_NUM; i++)
 //		audioEngine.thrds[i] = NULL;
 //    sai_os_init();
-//    sd_os_init();
+    sd_os_init();
 //    logApp_init();
 //    button_init();
 }
