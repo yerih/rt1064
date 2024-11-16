@@ -19,6 +19,7 @@ extern osa_msgq_handle_t logAppQ;
 void logApp(char* format, ...);
 void logApp_init(void);
 void logApp_thrd(void* arg);
+void test_logApp();
 
 
 #endif

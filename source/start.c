@@ -46,6 +46,7 @@ static void start_mainThread(void* arg)
 
 //	test_adc();
 	test_file();
+	test_logApp();
 
 	while(1);
 	vTaskDelete(NULL);
