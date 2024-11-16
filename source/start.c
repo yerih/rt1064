@@ -10,7 +10,7 @@ void start_initModules(void)
 //		audioEngine.thrds[i] = NULL;
 //    sai_os_init();
     sd_os_init();
-//    logApp_init();
+    logApp_init();
 //    button_init();
 }
 
@@ -36,7 +36,6 @@ static void start_mainThread(void* arg)
 //	adc_os_init();
 //	audio_initRamBuffers();
 //	pad_loadDefaultPads();
-//	logApp_init();
 	OSA_TimeDelay(200);
 //	audioEng_init();
 	OSA_TimeDelay(200);

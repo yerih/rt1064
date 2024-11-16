@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
 #include "fsl_sd.h"
 #include "fsl_debug_console.h"
 #include "ff.h"
@@ -36,7 +37,8 @@
 //#include "audio.h"
 //#include "pad.h"
 #include "file_os.h"
-//#include "logApp.h"
+#include "test_file.h"
+#include "logApp.h"
 //#include "button.h"
 
 

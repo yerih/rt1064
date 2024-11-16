@@ -86,7 +86,6 @@ status_t sd_os_mountDrive(void)
 {
     FRESULT error;
     const TCHAR driverNumberBuffer[3U] = {SDDISK + '0', ':', '/'};
-//    const TCHAR driverNumberBuffer[3U] = { '0', ':', '/'};
     BYTE work[FF_MAX_SS];
 
     printf("mounting SD in driver = %s...\r\n", driverNumberBuffer);
