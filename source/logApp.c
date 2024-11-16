@@ -53,7 +53,7 @@ void logApp_thrd(void* arg)
 void test_logApp()
 {
 	logApp("testing logApp(). Integer value = %d\r\n", -1);
-	logApp("testing logApp(). Integer value = %f\r\n", -1.50);
+	logApp("testing logApp(). Float value = %.2f\r\n", -1.51234);
 }
 
 
