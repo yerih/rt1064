@@ -131,6 +131,21 @@ void BOARD_InitBootPins(void);
 #define BOARD_LED_BOARD_PIN                                                   9U   /*!< PORT pin number */
 #define BOARD_LED_BOARD_PIN_MASK                                      (1U << 9U)   /*!< PORT pin mask */
 
+/* GPIO_B1_02 (coord C11), LCDIF_D14 */
+/* Routed pin properties */
+#define BOARD_LCDIF_D14_PERIPHERAL                                          SAI1   /*!< Peripheral name */
+#define BOARD_LCDIF_D14_SIGNAL                                       sai_tx_bclk   /*!< Signal name */
+
+/* GPIO_B1_01 (coord B11), LCDIF_D13 */
+/* Routed pin properties */
+#define BOARD_LCDIF_D13_PERIPHERAL                                          SAI1   /*!< Peripheral name */
+#define BOARD_LCDIF_D13_SIGNAL                                      sai_tx_data0   /*!< Signal name */
+
+/* GPIO_B1_03 (coord D11), LCDIF_D15 */
+/* Routed pin properties */
+#define BOARD_LCDIF_D15_PERIPHERAL                                          SAI1   /*!< Peripheral name */
+#define BOARD_LCDIF_D15_SIGNAL                                       sai_tx_sync   /*!< Signal name */
+
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *

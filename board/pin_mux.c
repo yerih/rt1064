@@ -51,6 +51,9 @@ BOARD_InitPins:
   - {pin_num: C14, peripheral: USDHC1, signal: usdhc_vselect, pin_signal: GPIO_B1_14}
   - {pin_num: F14, peripheral: GPIO1, signal: 'gpio_io, 09', pin_signal: GPIO_AD_B0_09, identifier: LED_BOARD, direction: OUTPUT, pull_up_down_config: Pull_Down_100K_Ohm,
     slew_rate: Fast}
+  - {pin_num: C11, peripheral: SAI1, signal: sai_tx_bclk, pin_signal: GPIO_B1_02}
+  - {pin_num: B11, peripheral: SAI1, signal: sai_tx_data0, pin_signal: GPIO_B1_01}
+  - {pin_num: D11, peripheral: SAI1, signal: sai_tx_sync, pin_signal: GPIO_B1_03}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -76,6 +79,9 @@ void BOARD_InitPins(void) {
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_09_GPIO1_IO09, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_12_LPUART1_TX, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_13_LPUART1_RX, 0U); 
+  IOMUXC_SetPinMux(IOMUXC_GPIO_B1_01_SAI1_TX_DATA00, 0U); 
+  IOMUXC_SetPinMux(IOMUXC_GPIO_B1_02_SAI1_TX_BCLK, 0U); 
+  IOMUXC_SetPinMux(IOMUXC_GPIO_B1_03_SAI1_TX_SYNC, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B1_12_GPIO2_IO28, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B1_14_USDHC1_VSELECT, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_SD_B0_00_USDHC1_CMD, 0U); 

@@ -12,6 +12,9 @@
 #include "fsl_common.h"
 #include "fsl_adapter_gpio.h"
 #include "pin_mux.h"
+#include "fsl_sai.h"
+#include "fsl_sai_edma.h"
+#include "fsl_clock.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -31,12 +34,27 @@ extern "C" {
 #define BOARD_LED_BOARD_PIN_DIRECTION kHAL_GpioDirectionOut
 /* Definition of the pin level after initialization */
 #define BOARD_LED_BOARD_PIN_LEVEL 0U
+/* Definition of peripheral ID */
+#define SAI1_PERIPHERAL SAI1
+/* Bit clock source frequency used for calculating the bit clock divider in the TxSetBitClockRate function. */
+#define SAI1_TX_BCLK_SOURCE_CLOCK_HZ 150000000UL
+/* Sample rate used for calculating the bit clock divider in the TxSetBitClockRate function. */
+#define SAI1_TX_SAMPLE_RATE 48000UL
+/* Word width used for calculating the bit clock divider in the TxSetBitClockRate function. */
+#define SAI1_TX_WORD_WIDTH 16U
+/* Number of words within frame used for calculating the bit clock divider in the TxSetBitClockRate function. */
+#define SAI1_TX_WORDS_PER_FRAME 2U
+/* BOARD_InitPeripherals defines for SEMC */
+/* Definition of peripheral ID. */
+#define SEMC_PERIPHERAL SEMC
 
 /***********************************************************************************************************************
  * Global variables
  **********************************************************************************************************************/
 extern GPIO_HANDLE_DEFINE(BOARD_CAN_STBY_handle);
 extern GPIO_HANDLE_DEFINE(BOARD_LED_BOARD_handle);
+extern sai_transceiver_t SAI1_Tx_config;
+extern sai_edma_handle_t SAI1_SAI_Tx_eDMA_Handle;
 
 /***********************************************************************************************************************
  * Global functions

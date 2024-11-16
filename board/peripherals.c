@@ -180,6 +180,241 @@ static void GPIO1_init(void) {
 }
 
 /***********************************************************************************************************************
+ * SAI1 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'SAI1'
+- type: 'sai'
+- mode: 'edma'
+- custom_name_enabled: 'false'
+- type_id: 'sai_2.3.6'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'SAI1'
+- config_sets:
+  - fsl_sai:
+    - usage: 'playback'
+    - signal_config:
+      - 0:
+        - sourceTx: 'Tx'
+      - 1:
+        - sourceTx: 'Tx'
+    - syncSwapI: []
+    - bclkTxSetting: []
+    - syncTxSetting: []
+    - whole:
+      - tx_group:
+        - sai_transceiver:
+          - bitClock:
+            - modeM: 'master'
+            - bitClockSource: 'kSAI_BclkSourceBusclk'
+            - bitClockSourceFreq: 'ClocksTool_DefaultInit'
+            - bclkPolarityM: 'kSAI_PolarityActiveLow'
+            - bclkInputDelayM: 'false'
+          - frameSync:
+            - modeM: 'master'
+            - frameSyncWidthM: '16'
+            - frameSyncPolarityM: 'kSAI_PolarityActiveLow'
+            - frameSyncEarlyM: 'true'
+            - frameSyncGenerateOnDemandM: 'false'
+          - sampleRate_Hz: 'kSAI_SampleRate48KHz'
+          - channelMask: 'kSAI_Channel0Mask'
+          - serialData:
+            - dataMode: 'kSAI_DataPinStateTriState'
+            - differentFirstWord: 'false'
+            - sameDataWordLengthM: 'kSAI_WordWidth16bits'
+            - dataOrder: 'kSAI_DataMSB'
+            - dataFirstBitShiftedM: '16'
+            - dataWordNumM: '2'
+            - dataMasked_config:
+              - dataMasked_L:
+                - 0: 'false'
+                - 1: 'false'
+                - 2: 'false'
+                - 3: 'false'
+                - 4: 'false'
+                - 5: 'false'
+                - 6: 'false'
+                - 7: 'false'
+                - 8: 'false'
+                - 9: 'false'
+                - 10: 'false'
+                - 11: 'false'
+                - 12: 'false'
+                - 13: 'false'
+                - 14: 'false'
+                - 15: 'false'
+              - dataMasked_H:
+                - 0: 'false'
+                - 1: 'false'
+                - 2: 'false'
+                - 3: 'false'
+                - 4: 'false'
+                - 5: 'false'
+                - 6: 'false'
+                - 7: 'false'
+                - 8: 'false'
+                - 9: 'false'
+                - 10: 'false'
+                - 11: 'false'
+                - 12: 'false'
+                - 13: 'false'
+                - 14: 'false'
+                - 15: 'false'
+          - fifo:
+            - fifoWatermarkM: '16'
+            - fifoCombine: 'kSAI_FifoCombineDisabled'
+            - fifoPacking: 'kSAI_FifoPackingDisabled'
+            - fifoContinueOneError: 'false'
+        - edma_group:
+          - enable_edma_channel: 'false'
+          - edma_channel:
+            - uid: '1731790168109'
+            - eDMAn: '0'
+            - eDMA_source: 'kDmaRequestMuxSai1Tx'
+            - enableTriggerPIT: 'false'
+            - init_channel_priority: 'false'
+            - edma_channel_Preemption:
+              - enableChannelPreemption: 'false'
+              - enablePreemptAbility: 'false'
+              - channelPriority: '0'
+            - enable_custom_name: 'false'
+          - sai_edma_handle:
+            - enable_custom_name: 'false'
+            - placement:
+              - section: 'cacheable'
+              - zeroInitialize: 'false'
+              - align: '32'
+            - init_callback: 'false'
+            - callback_fcn: ''
+            - user_data: ''
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+/* SAI1 Tx configuration */
+sai_transceiver_t SAI1_Tx_config = {
+  .masterSlave = kSAI_Master,
+  .bitClock = {
+    .bclkSrcSwap = false,
+    .bclkSource = kSAI_BclkSourceBusclk,
+    .bclkPolarity = kSAI_PolarityActiveLow,
+    .bclkInputDelay = false
+  },
+  .frameSync = {
+    .frameSyncWidth = 16U,
+    .frameSyncPolarity = kSAI_PolarityActiveLow,
+    .frameSyncEarly = true,
+    .frameSyncGenerateOnDemand = false
+  },
+  .syncMode = kSAI_ModeAsync,
+  .channelMask = kSAI_Channel0Mask,
+  .startChannel = 0U,
+  .endChannel = 0U,
+  .channelNums = 1U,
+  .serialData = {
+    .dataMode = kSAI_DataPinStateTriState,
+    .dataWord0Length = (uint8_t)kSAI_WordWidth16bits,
+    .dataWordNLength = (uint8_t)kSAI_WordWidth16bits,
+    .dataWordLength = (uint8_t)kSAI_WordWidth16bits,
+    .dataOrder = kSAI_DataMSB,
+    .dataFirstBitShifted = 16U,
+    .dataWordNum = 2U,
+    .dataMaskedWord = 0x0U
+  },
+  .fifo = {
+    .fifoWatermark = 16U,
+    .fifoCombine = kSAI_FifoCombineDisabled,
+    .fifoPacking = kSAI_FifoPackingDisabled,
+    .fifoContinueOneError = false
+  }
+};
+sai_edma_handle_t SAI1_SAI_Tx_eDMA_Handle;
+
+static void SAI1_init(void) {
+  /* Initialize SAI clock gate */
+  SAI_Init(SAI1_PERIPHERAL);
+  /* Create the SAI Tx eDMA handle */
+  SAI_TransferTxCreateHandleEDMA(SAI1_PERIPHERAL, &SAI1_SAI_Tx_eDMA_Handle, NULL, NULL, NULL);
+  /* Configures SAI Tx sub-module functionality */
+  SAI_TransferTxSetConfigEDMA(SAI1_PERIPHERAL, &SAI1_SAI_Tx_eDMA_Handle, &SAI1_Tx_config);
+  /* Set up SAI Tx bitclock rate by calculation of divider. */
+  SAI_TxSetBitClockRate(SAI1_PERIPHERAL, SAI1_TX_BCLK_SOURCE_CLOCK_HZ, SAI1_TX_SAMPLE_RATE, SAI1_TX_WORD_WIDTH, SAI1_TX_WORDS_PER_FRAME);
+}
+
+/***********************************************************************************************************************
+ * SEMC initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'SEMC'
+- type: 'semc'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'semc_2.7.0'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'SEMC'
+- config_sets:
+  - fsl_semc:
+    - enableDCD: 'true'
+    - clockConfig:
+      - clockSource: 'kSEMC_ClkSrcPeri'
+      - clockSourceFreq: 'ClocksTool_DefaultInit'
+    - semc_config_t:
+      - dqsMode: 'kSEMC_Loopbackdqspad'
+      - cmdTimeoutCycles: '0'
+      - busTimeoutCycles: '0'
+      - queueWeight:
+        - queueaEnable: 'false'
+        - queueaWeight:
+          - structORvalue: 'structure'
+          - queueaConfig:
+            - qos: '0'
+            - aging: '0'
+            - slaveHitNoswitch: '0'
+            - slaveHitSwitch: '0'
+        - queuebEnable: 'false'
+        - queuebWeight:
+          - structORvalue: 'structure'
+          - queuebConfig:
+            - qos: '0'
+            - aging: '0'
+            - weightPagehit: '0'
+            - slaveHitNoswitch: '0'
+            - bankRotation: '0'
+    - semc_sdram_config_t:
+      - csxPinMux: 'kSEMC_MUXCSX0'
+      - semcSdramCs: 'kSEMC_SDRAM_CS0'
+      - address: '0x80000000'
+      - memsize_input: '32MB'
+      - portSize: 'kSEMC_PortSize16Bit'
+      - burstLen: 'kSEMC_Sdram_BurstLen1'
+      - columnAddrBitNum: 'kSEMC_SdramColunm_9bit'
+      - casLatency: 'kSEMC_LatencyThree'
+      - tPrecharge2Act_Ns: '18'
+      - tAct2ReadWrite_Ns: '18'
+      - tRefreshRecovery_Ns: '127'
+      - tWriteRecovery_Ns: '12'
+      - tCkeOff_Ns: '42'
+      - tAct2Prechage_Ns: '42'
+      - tSelfRefRecovery_Ns: '67'
+      - tRefresh2Refresh_Ns: '60'
+      - tAct2Act_Ns: '60'
+      - tPrescalePeriod_Ns: '160'
+      - tIdleTimeout_Ns: '0'
+      - refreshPeriod_nsPerRow: '64'
+      - refreshUrgThreshold: '64'
+      - refreshBurstLen: '1'
+      - autofreshTimesEnum: '0'
+    - sdramArray: []
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+
+/* Empty initialization function (commented out)
+static void SEMC_init(void) {
+} */
+
+/***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
 void BOARD_InitPeripherals(void)
@@ -190,6 +425,7 @@ void BOARD_InitPeripherals(void)
 
   /* Initialize components */
   GPIO1_init();
+  SAI1_init();
 }
 
 /***********************************************************************************************************************
