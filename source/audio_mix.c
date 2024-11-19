@@ -4,18 +4,28 @@
 #include "audio_mix.h"
 
 
-__NOINIT(RAM4) AudioMixChannel_t mixCh;
+//__NOINIT(RAM4) int16_t snareRam[SIZE_1B];
+int16_t kickRam[SIZE_1B];
+int16_t hithatRam[SIZE_1B];
+int16_t tom1Ram[SIZE_1B];
+int16_t tom2Ram[SIZE_1B];
+int16_t tom3Ram[SIZE_1B];
+int16_t crash1Ram[SIZE_1B];
+int16_t crash2Ram[SIZE_1B];
+int16_t chinaRam[SIZE_1B];
 
-
-__NOINIT(RAM4) int16_t snareRam[PAD_SIZE_16BIT];
-__NOINIT(RAM4) int16_t kickRam[PAD_SIZE_16BIT];
-__NOINIT(RAM4) int16_t hithatRam[PAD_SIZE_16BIT];
-__NOINIT(RAM4) int16_t tom1Ram[PAD_SIZE_16BIT];
-__NOINIT(RAM4) int16_t tom2Ram[PAD_SIZE_16BIT];
-__NOINIT(RAM4) int16_t tom3Ram[PAD_SIZE_16BIT];
-__NOINIT(RAM4) int16_t crash1Ram[PAD_SIZE_16BIT];
-__NOINIT(RAM4) int16_t crash2Ram[PAD_SIZE_16BIT];
-__NOINIT(RAM4) int16_t chinaRam[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) AudioMixChannel_t mixCh;
+//
+//
+//__NOINIT(RAM4) int16_t snareRam[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) int16_t kickRam[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) int16_t hithatRam[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) int16_t tom1Ram[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) int16_t tom2Ram[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) int16_t tom3Ram[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) int16_t crash1Ram[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) int16_t crash2Ram[PAD_SIZE_16BIT];
+//__NOINIT(RAM4) int16_t chinaRam[PAD_SIZE_16BIT];
 
 
 AudioPadChannel_t snareCh 	= {.buffer = {snareRam,  NULL, NULL}, .volume = 1, .i = 0, .semph = NULL};

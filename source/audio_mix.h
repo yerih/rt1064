@@ -58,16 +58,25 @@ typedef struct st_audioMixConfig
 extern AudioMixChannel_t mixCh;
 
 
-
-extern int16_t snareRam[PAD_SIZE_16BIT];
-extern int16_t kickRam[PAD_SIZE_16BIT];
-extern int16_t hithatRam[PAD_SIZE_16BIT];
-extern int16_t tom1Ram[PAD_SIZE_16BIT];
-extern int16_t tom2Ram[PAD_SIZE_16BIT];
-extern int16_t tom3Ram[PAD_SIZE_16BIT];
-extern int16_t crash1Ram[PAD_SIZE_16BIT];
-extern int16_t crash2Ram[PAD_SIZE_16BIT];
-extern int16_t chinaRam[PAD_SIZE_16BIT];
+#define SIZE_1B 1
+extern int16_t snareRam[SIZE_1B];
+extern int16_t kickRam[SIZE_1B];
+extern int16_t hithatRam[SIZE_1B];
+extern int16_t tom1Ram[SIZE_1B];
+extern int16_t tom2Ram[SIZE_1B];
+extern int16_t tom3Ram[SIZE_1B];
+extern int16_t crash1Ram[SIZE_1B];
+extern int16_t crash2Ram[SIZE_1B];
+extern int16_t chinaRam[SIZE_1B];
+//extern int16_t snareRam[PAD_SIZE_16BIT];
+//extern int16_t kickRam[PAD_SIZE_16BIT];
+//extern int16_t hithatRam[PAD_SIZE_16BIT];
+//extern int16_t tom1Ram[PAD_SIZE_16BIT];
+//extern int16_t tom2Ram[PAD_SIZE_16BIT];
+//extern int16_t tom3Ram[PAD_SIZE_16BIT];
+//extern int16_t crash1Ram[PAD_SIZE_16BIT];
+//extern int16_t crash2Ram[PAD_SIZE_16BIT];
+//extern int16_t chinaRam[PAD_SIZE_16BIT];
 
 
 extern AudioPadChannel_t snareCh;

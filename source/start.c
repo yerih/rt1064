@@ -47,6 +47,7 @@ static void start_mainThread(void* arg)
 //	test_adc();
 	test_file();
 	test_logApp();
+//	test_ram();
 	test_led();
 
 	while(1);
