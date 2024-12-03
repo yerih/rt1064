@@ -31,6 +31,9 @@ extern "C" {
 #define BOARD_LED_BOARD_PIN_DIRECTION kHAL_GpioDirectionOut
 /* Definition of the pin level after initialization */
 #define BOARD_LED_BOARD_PIN_LEVEL 0U
+/* BOARD_InitPeripherals defines for SEMC */
+/* Definition of peripheral ID. */
+#define SEMC_PERIPHERAL SEMC
 
 /***********************************************************************************************************************
  * Global variables

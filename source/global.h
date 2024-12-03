@@ -38,6 +38,7 @@
 //#include "pad.h"
 #include "file_os.h"
 #include "test_file.h"
+#include "test_ram.h"
 #include "logApp.h"
 #include "led.h"
 //#include "button.h"

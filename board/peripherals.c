@@ -180,6 +180,78 @@ static void GPIO1_init(void) {
 }
 
 /***********************************************************************************************************************
+ * SEMC initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'SEMC'
+- type: 'semc'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'semc_2.5.0'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'SEMC'
+- config_sets:
+  - fsl_semc:
+    - enableDCD: 'true'
+    - clockConfig:
+      - clockSource: 'kSEMC_ClkSrcPeri'
+      - clockSourceFreq: 'BOARD_BootClockRUN'
+    - semc_config_t:
+      - dqsMode: 'kSEMC_Loopbackdqspad'
+      - cmdTimeoutCycles: '0'
+      - busTimeoutCycles: '0'
+      - queueWeight:
+        - queueaEnable: 'false'
+        - queueaWeight:
+          - structORvalue: 'structure'
+          - queueaConfig:
+            - qos: '5'
+            - aging: '8'
+            - slaveHitNoswitch: '0x40'
+            - slaveHitSwitch: '0x10'
+        - queuebEnable: 'false'
+        - queuebWeight:
+          - structORvalue: 'structure'
+          - queuebConfig:
+            - qos: '5'
+            - aging: '8'
+            - weightPagehit: '0x60'
+            - slaveHitNoswitch: '0x24'
+            - bankRotation: '0x40'
+    - semc_sdram_config_t:
+      - csxPinMux: 'kSEMC_MUXCSX0'
+      - semcSdramCs: 'kSEMC_SDRAM_CS0'
+      - address: '0x80000000'
+      - memsize_input: '32MB'
+      - portSize: 'kSEMC_PortSize16Bit'
+      - burstLen: 'kSEMC_Sdram_BurstLen8'
+      - columnAddrBitNum: 'kSEMC_SdramColunm_9bit'
+      - casLatency: 'kSEMC_LatencyThree'
+      - tPrecharge2Act_Ns: '36'
+      - tAct2ReadWrite_Ns: '36'
+      - tRefreshRecovery_Ns: '127'
+      - tWriteRecovery_Ns: '20'
+      - tCkeOff_Ns: '70'
+      - tAct2Prechage_Ns: '90'
+      - tSelfRefRecovery_Ns: '255'
+      - tRefresh2Refresh_Ns: '120'
+      - tAct2Act_Ns: '12'
+      - tPrescalePeriod_Ns: '220'
+      - tIdleTimeout_Ns: '0'
+      - refreshPeriod_nsPerRow: '73000'
+      - refreshUrgThreshold: '178000'
+      - refreshBurstLen: '5'
+    - sdramArray: []
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+
+/* Empty initialization function (commented out)
+static void SEMC_init(void) {
+} */
+
+/***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
 void BOARD_InitPeripherals(void)
