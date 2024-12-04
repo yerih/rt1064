@@ -34,16 +34,6 @@ extern "C" {
 #define BOARD_LED_BOARD_PIN_DIRECTION kHAL_GpioDirectionOut
 /* Definition of the pin level after initialization */
 #define BOARD_LED_BOARD_PIN_LEVEL 0U
-/* Definition of peripheral ID */
-#define SAI1_PERIPHERAL SAI1
-/* Bit clock source frequency used for calculating the bit clock divider in the TxSetBitClockRate function. */
-#define SAI1_TX_BCLK_SOURCE_CLOCK_HZ 150000000UL
-/* Sample rate used for calculating the bit clock divider in the TxSetBitClockRate function. */
-#define SAI1_TX_SAMPLE_RATE 48000UL
-/* Word width used for calculating the bit clock divider in the TxSetBitClockRate function. */
-#define SAI1_TX_WORD_WIDTH 16U
-/* Number of words within frame used for calculating the bit clock divider in the TxSetBitClockRate function. */
-#define SAI1_TX_WORDS_PER_FRAME 2U
 /* BOARD_InitPeripherals defines for SEMC */
 /* Definition of peripheral ID. */
 #define SEMC_PERIPHERAL SEMC

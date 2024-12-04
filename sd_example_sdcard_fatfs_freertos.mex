@@ -14,6 +14,10 @@
       <validate_boot_init_only>true</validate_boot_init_only>
       <generate_extended_information>false</generate_extended_information>
       <generate_code_modified_registers_only>false</generate_code_modified_registers_only>
+      <custom_copyright>
+         <text></text>
+         <enabled>true</enabled>
+      </custom_copyright>
       <update_include_paths>true</update_include_paths>
       <generate_registers_defines>false</generate_registers_defines>
    </preferences>
@@ -58,6 +62,11 @@
                         <data>true</data>
                      </feature>
                   </dependency>
+                  <dependency resourceType="Peripheral" resourceId="SEMC" description="Peripheral SEMC signals are routed in the Pins Tool, but the peripheral is not initialized in the Peripherals Tool." problem_level="1" source="Pins:BOARD_InitPins">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
                   <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins">
                      <feature name="enabled" evaluation="equal" configuration="core0">
                         <data>true</data>
@@ -97,6 +106,57 @@
                   <pin peripheral="SAI1" signal="sai_tx_bclk" pin_num="C11" pin_signal="GPIO_B1_02"/>
                   <pin peripheral="SAI1" signal="sai_tx_data0" pin_num="B11" pin_signal="GPIO_B1_01"/>
                   <pin peripheral="SAI1" signal="sai_tx_sync" pin_num="D11" pin_signal="GPIO_B1_03"/>
+                  <pin peripheral="SEMC" signal="ADDR, 00" pin_num="C2" pin_signal="GPIO_EMC_09"/>
+                  <pin peripheral="SEMC" signal="ADDR, 01" pin_num="G1" pin_signal="GPIO_EMC_10"/>
+                  <pin peripheral="SEMC" signal="ADDR, 02" pin_num="G3" pin_signal="GPIO_EMC_11"/>
+                  <pin peripheral="SEMC" signal="ADDR, 03" pin_num="H1" pin_signal="GPIO_EMC_12"/>
+                  <pin peripheral="SEMC" signal="ADDR, 04" pin_num="A6" pin_signal="GPIO_EMC_13"/>
+                  <pin peripheral="SEMC" signal="ADDR, 05" pin_num="B6" pin_signal="GPIO_EMC_14"/>
+                  <pin peripheral="SEMC" signal="ADDR, 06" pin_num="B1" pin_signal="GPIO_EMC_15"/>
+                  <pin peripheral="SEMC" signal="ADDR, 07" pin_num="A5" pin_signal="GPIO_EMC_16"/>
+                  <pin peripheral="SEMC" signal="ADDR, 08" pin_num="A4" pin_signal="GPIO_EMC_17"/>
+                  <pin peripheral="SEMC" signal="ADDR, 09" pin_num="B2" pin_signal="GPIO_EMC_18"/>
+                  <pin peripheral="SEMC" signal="ADDR, 10" pin_num="G2" pin_signal="GPIO_EMC_23"/>
+                  <pin peripheral="SEMC" signal="ADDR, 11" pin_num="B4" pin_signal="GPIO_EMC_19"/>
+                  <pin peripheral="SEMC" signal="ADDR, 12" pin_num="A3" pin_signal="GPIO_EMC_20"/>
+                  <pin peripheral="SEMC" signal="BA, 0" pin_num="C1" pin_signal="GPIO_EMC_21"/>
+                  <pin peripheral="SEMC" signal="BA, 1" pin_num="F1" pin_signal="GPIO_EMC_22"/>
+                  <pin peripheral="SEMC" signal="semc_cas" pin_num="D3" pin_signal="GPIO_EMC_24"/>
+                  <pin peripheral="SEMC" signal="semc_cke" pin_num="A2" pin_signal="GPIO_EMC_27"/>
+                  <pin peripheral="SEMC" signal="semc_clk" pin_num="B3" pin_signal="GPIO_EMC_26"/>
+                  <pin peripheral="SEMC" signal="semc_clkx, 1" pin_num="G10" pin_signal="GPIO_AD_B0_11"/>
+                  <pin peripheral="SEMC" signal="CS, 0" pin_num="E1" pin_signal="GPIO_EMC_29"/>
+                  <pin peripheral="SEMC" signal="CSX, 0" pin_num="C7" pin_signal="GPIO_EMC_41"/>
+                  <pin peripheral="SEMC" signal="CSX, 1" pin_num="D7" pin_signal="GPIO_B0_00"/>
+                  <pin peripheral="SEMC" signal="CSX, 2" pin_num="E7" pin_signal="GPIO_B0_01"/>
+                  <pin peripheral="SEMC" signal="CSX, 3" pin_num="E8" pin_signal="GPIO_B0_02"/>
+                  <pin peripheral="SEMC" signal="DATA, 00" pin_num="E3" pin_signal="GPIO_EMC_00"/>
+                  <pin peripheral="SEMC" signal="DATA, 01" pin_num="F3" pin_signal="GPIO_EMC_01"/>
+                  <pin peripheral="SEMC" signal="DATA, 02" pin_num="F4" pin_signal="GPIO_EMC_02"/>
+                  <pin peripheral="SEMC" signal="DATA, 03" pin_num="G4" pin_signal="GPIO_EMC_03"/>
+                  <pin peripheral="SEMC" signal="DATA, 04" pin_num="F2" pin_signal="GPIO_EMC_04"/>
+                  <pin peripheral="SEMC" signal="DATA, 05" pin_num="G5" pin_signal="GPIO_EMC_05"/>
+                  <pin peripheral="SEMC" signal="DATA, 06" pin_num="H5" pin_signal="GPIO_EMC_06"/>
+                  <pin peripheral="SEMC" signal="DATA, 07" pin_num="H4" pin_signal="GPIO_EMC_07"/>
+                  <pin peripheral="SEMC" signal="DATA, 08" pin_num="C6" pin_signal="GPIO_EMC_30"/>
+                  <pin peripheral="SEMC" signal="DATA, 09" pin_num="C5" pin_signal="GPIO_EMC_31"/>
+                  <pin peripheral="SEMC" signal="DATA, 10" pin_num="D5" pin_signal="GPIO_EMC_32"/>
+                  <pin peripheral="SEMC" signal="DATA, 11" pin_num="C4" pin_signal="GPIO_EMC_33"/>
+                  <pin peripheral="SEMC" signal="DATA, 12" pin_num="D4" pin_signal="GPIO_EMC_34"/>
+                  <pin peripheral="SEMC" signal="DATA, 13" pin_num="E5" pin_signal="GPIO_EMC_35"/>
+                  <pin peripheral="SEMC" signal="DATA, 14" pin_num="C3" pin_signal="GPIO_EMC_36"/>
+                  <pin peripheral="SEMC" signal="DATA, 15" pin_num="E4" pin_signal="GPIO_EMC_37"/>
+                  <pin peripheral="SEMC" signal="DM, 0" pin_num="H3" pin_signal="GPIO_EMC_08"/>
+                  <pin peripheral="SEMC" signal="DM, 1" pin_num="D6" pin_signal="GPIO_EMC_38"/>
+                  <pin peripheral="SEMC" signal="semc_dqs" pin_num="B7" pin_signal="GPIO_EMC_39"/>
+                  <pin peripheral="SEMC" signal="semc_dqs4" pin_num="D14" pin_signal="GPIO_B1_13"/>
+                  <pin peripheral="SEMC" signal="semc_ras" pin_num="D2" pin_signal="GPIO_EMC_25"/>
+                  <pin peripheral="SEMC" signal="semc_rdy" pin_num="A7" pin_signal="GPIO_EMC_40">
+                     <pin_features>
+                        <pin_feature name="identifier" value=""/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="SEMC" signal="semc_we" pin_num="D1" pin_signal="GPIO_EMC_28"/>
                </pins>
             </function>
          </functions_list>
@@ -202,7 +262,7 @@
                   <clock_output id="SAI3_CLK_ROOT.outFreq" value="1080/17 MHz" locked="false" accuracy=""/>
                   <clock_output id="SAI3_MCLK1.outFreq" value="1080/17 MHz" locked="false" accuracy=""/>
                   <clock_output id="SAI3_MCLK3.outFreq" value="30 MHz" locked="false" accuracy=""/>
-                  <clock_output id="SEMC_CLK_ROOT.outFreq" value="75 MHz" locked="false" accuracy=""/>
+                  <clock_output id="SEMC_CLK_ROOT.outFreq" value="100 MHz" locked="true" accuracy="0.001"/>
                   <clock_output id="SPDIF0_CLK_ROOT.outFreq" value="30 MHz" locked="false" accuracy=""/>
                   <clock_output id="TRACE_CLK_ROOT.outFreq" value="132 MHz" locked="false" accuracy=""/>
                   <clock_output id="UART_CLK_ROOT.outFreq" value="80 MHz" locked="false" accuracy=""/>
@@ -220,7 +280,7 @@
                   <setting id="CCM.LCDIF_PRED.scale" value="2" locked="true"/>
                   <setting id="CCM.LPSPI_PODF.scale" value="5" locked="true"/>
                   <setting id="CCM.PERCLK_PODF.scale" value="2" locked="true"/>
-                  <setting id="CCM.SEMC_PODF.scale" value="8" locked="false"/>
+                  <setting id="CCM.SEMC_PODF.scale" value="6" locked="false"/>
                   <setting id="CCM.TRACE_CLK_SEL.sel" value="CCM_ANALOG.PLL2_MAIN_CLK" locked="false"/>
                   <setting id="CCM.TRACE_PODF.scale" value="4" locked="true"/>
                   <setting id="CCM_ANALOG.PLL1_BYPASS.sel" value="CCM_ANALOG.PLL1" locked="false"/>
@@ -420,7 +480,7 @@
                         <command type="write_value" address="CCM_CCGR6" value="0xFFFFFFFF" value_width="4"/>
                         <command type="write_value" address="CCM_ANALOG_PLL_SYS" value="0x2001" value_width="4"/>
                         <command type="write_value" address="CCM_ANALOG_PFD_528" value="0x101D101B" value_width="4"/>
-                        <command type="write_value" address="CCM_CBCDR" value="0x10D40" value_width="4"/>
+                        <command type="write_value" address="CCM_CBCDR" value="0xA8300" value_width="4"/>
                         <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_00" value="0x00" value_width="4"/>
                         <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_01" value="0x00" value_width="4"/>
                         <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_02" value="0x00" value_width="4"/>
@@ -514,7 +574,7 @@
                         <command type="write_value" address="SEMC_BR7" value="0xA900001B" value_width="4"/>
                         <command type="write_value" address="SEMC_BR8" value="0x21" value_width="4"/>
                         <command type="write_value" address="SEMC_IOCR" value="0x79A8" value_width="4"/>
-                        <command type="write_value" address="SEMC_SDRAMCR0" value="0xF31" value_width="4"/>
+                        <command type="write_value" address="SEMC_SDRAMCR0" value="0xC26" value_width="4"/>
                         <command type="write_value" address="SEMC_SDRAMCR1" value="0x652922" value_width="4"/>
                         <command type="write_value" address="SEMC_SDRAMCR2" value="0x10920" value_width="4"/>
                         <command type="write_value" address="SEMC_SDRAMCR3" value="0x50210A08" value_width="4"/>
@@ -554,24 +614,14 @@
                   <data type="Version">1.0.1</data>
                </feature>
             </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.sai" description="SAI Driver is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.sai" description="An unsupported version of the SAI Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="greaterOrEqual">
-                  <data type="Version" maxValue="2.4.9">2.3.6</data>
-               </feature>
-            </dependency>
             <dependency resourceType="SWComponent" resourceId="platform.drivers.semc" description="SEMC Driver is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data type="Boolean">true</data>
                </feature>
             </dependency>
             <dependency resourceType="SWComponent" resourceId="platform.drivers.semc" description="An unsupported version of the SEMC Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="equivalent">
-                  <data type="Version">2.7.0</data>
+               <feature name="version" evaluation="greaterOrEqual">
+                  <data type="Version" maxValue="2.6.9">2.5.0</data>
                </feature>
             </dependency>
             <dependency resourceType="Tool" resourceId="Pins" description="The Pins tool is required by the Peripherals tool, but it is disabled." problem_level="2" source="Peripherals">
@@ -591,6 +641,9 @@
          </generated_project_files>
          <peripherals_profile>
             <processor_version>16.3.0</processor_version>
+            <ignored_component_migration_offer>
+               <component>semc</component>
+            </ignored_component_migration_offer>
          </peripherals_profile>
          <functional_groups>
             <functional_group name="BOARD_InitPeripherals" uuid="f789b825-386a-4bf9-9a4b-06a15f384947" called_from_default_init="true" id_prefix="" core="core0">
@@ -694,133 +747,12 @@
                         <array name="differentPeripheralsAdd"/>
                      </config_set>
                   </instance>
-                  <instance name="SAI1" uuid="81f63c24-1cb4-40a7-9bec-c68e6786adfa" type="sai" type_id="sai_2.3.6" mode="edma" peripheral="SAI1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="fsl_sai">
-                        <setting name="usage" value="playback"/>
-                        <array name="signal_config">
-                           <struct name="0">
-                              <setting name="sourceTx" value="Tx"/>
-                           </struct>
-                           <struct name="1">
-                              <setting name="sourceTx" value="Tx"/>
-                           </struct>
-                        </array>
-                        <struct name="syncSwapI"/>
-                        <struct name="bclkTxSetting"/>
-                        <struct name="syncTxSetting"/>
-                        <struct name="whole">
-                           <struct name="tx_group">
-                              <struct name="sai_transceiver">
-                                 <struct name="bitClock">
-                                    <setting name="modeM" value="master"/>
-                                    <setting name="bitClockSource" value="kSAI_BclkSourceBusclk"/>
-                                    <setting name="bitClockSourceFreq" value="ClocksTool_DefaultInit"/>
-                                    <setting name="bclkPolarityM" value="kSAI_PolarityActiveLow"/>
-                                    <setting name="bclkInputDelayM" value="false"/>
-                                 </struct>
-                                 <struct name="frameSync">
-                                    <setting name="modeM" value="master"/>
-                                    <setting name="frameSyncWidthM" value="16"/>
-                                    <setting name="frameSyncPolarityM" value="kSAI_PolarityActiveLow"/>
-                                    <setting name="frameSyncEarlyM" value="true"/>
-                                    <setting name="frameSyncGenerateOnDemandM" value="false"/>
-                                 </struct>
-                                 <setting name="sampleRate_Hz" value="kSAI_SampleRate48KHz"/>
-                                 <set name="channelMask">
-                                    <selected>
-                                       <id>kSAI_Channel0Mask</id>
-                                    </selected>
-                                 </set>
-                                 <struct name="serialData">
-                                    <setting name="dataMode" value="kSAI_DataPinStateTriState"/>
-                                    <setting name="differentFirstWord" value="false"/>
-                                    <setting name="sameDataWordLengthM" value="kSAI_WordWidth16bits"/>
-                                    <setting name="dataOrder" value="kSAI_DataMSB"/>
-                                    <setting name="dataFirstBitShiftedM" value="16"/>
-                                    <setting name="dataWordNumM" value="2"/>
-                                    <struct name="dataMasked_config">
-                                       <array name="dataMasked_L">
-                                          <setting name="0" value="false"/>
-                                          <setting name="1" value="false"/>
-                                          <setting name="2" value="false"/>
-                                          <setting name="3" value="false"/>
-                                          <setting name="4" value="false"/>
-                                          <setting name="5" value="false"/>
-                                          <setting name="6" value="false"/>
-                                          <setting name="7" value="false"/>
-                                          <setting name="8" value="false"/>
-                                          <setting name="9" value="false"/>
-                                          <setting name="10" value="false"/>
-                                          <setting name="11" value="false"/>
-                                          <setting name="12" value="false"/>
-                                          <setting name="13" value="false"/>
-                                          <setting name="14" value="false"/>
-                                          <setting name="15" value="false"/>
-                                       </array>
-                                       <array name="dataMasked_H">
-                                          <setting name="0" value="false"/>
-                                          <setting name="1" value="false"/>
-                                          <setting name="2" value="false"/>
-                                          <setting name="3" value="false"/>
-                                          <setting name="4" value="false"/>
-                                          <setting name="5" value="false"/>
-                                          <setting name="6" value="false"/>
-                                          <setting name="7" value="false"/>
-                                          <setting name="8" value="false"/>
-                                          <setting name="9" value="false"/>
-                                          <setting name="10" value="false"/>
-                                          <setting name="11" value="false"/>
-                                          <setting name="12" value="false"/>
-                                          <setting name="13" value="false"/>
-                                          <setting name="14" value="false"/>
-                                          <setting name="15" value="false"/>
-                                       </array>
-                                    </struct>
-                                 </struct>
-                                 <struct name="fifo">
-                                    <setting name="fifoWatermarkM" value="16"/>
-                                    <setting name="fifoCombine" value="kSAI_FifoCombineDisabled"/>
-                                    <setting name="fifoPacking" value="kSAI_FifoPackingDisabled"/>
-                                    <setting name="fifoContinueOneError" value="false"/>
-                                 </struct>
-                              </struct>
-                              <struct name="edma_group">
-                                 <setting name="enable_edma_channel" value="false"/>
-                                 <struct name="edma_channel">
-                                    <setting name="uid" value="1731790168109"/>
-                                    <setting name="eDMAn" value="0"/>
-                                    <setting name="eDMA_source" value="kDmaRequestMuxSai1Tx"/>
-                                    <setting name="enableTriggerPIT" value="false"/>
-                                    <setting name="init_channel_priority" value="false"/>
-                                    <struct name="edma_channel_Preemption">
-                                       <setting name="enableChannelPreemption" value="false"/>
-                                       <setting name="enablePreemptAbility" value="false"/>
-                                       <setting name="channelPriority" value="0"/>
-                                    </struct>
-                                    <setting name="enable_custom_name" value="false"/>
-                                 </struct>
-                                 <struct name="sai_edma_handle">
-                                    <setting name="enable_custom_name" value="false"/>
-                                    <struct name="placement">
-                                       <setting name="section" value="cacheable"/>
-                                       <setting name="zeroInitialize" value="false"/>
-                                       <setting name="align" value="32"/>
-                                    </struct>
-                                    <setting name="init_callback" value="false"/>
-                                    <setting name="callback_fcn" value=""/>
-                                    <setting name="user_data" value=""/>
-                                 </struct>
-                              </struct>
-                           </struct>
-                        </struct>
-                     </config_set>
-                  </instance>
-                  <instance name="SEMC" uuid="f8b2d3d8-e8a2-487d-a31c-89f51a9b8d7d" type="semc" type_id="semc_2.7.0" mode="general" peripheral="SEMC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="SEMC" uuid="cf64a860-31c2-4aa2-a8d2-506c782b0a84" type="semc" type_id="semc_2.5.0" mode="general" peripheral="SEMC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="fsl_semc">
                         <setting name="enableDCD" value="true"/>
                         <struct name="clockConfig">
                            <setting name="clockSource" value="kSEMC_ClkSrcPeri"/>
-                           <setting name="clockSourceFreq" value="ClocksTool_DefaultInit"/>
+                           <setting name="clockSourceFreq" value="BOARD_BootClockRUN"/>
                         </struct>
                         <struct name="semc_config_t">
                            <setting name="dqsMode" value="kSEMC_Loopbackdqspad"/>
@@ -831,21 +763,21 @@
                               <struct name="queueaWeight">
                                  <setting name="structORvalue" value="structure"/>
                                  <struct name="queueaConfig">
-                                    <setting name="qos" value="0"/>
-                                    <setting name="aging" value="0"/>
-                                    <setting name="slaveHitNoswitch" value="0"/>
-                                    <setting name="slaveHitSwitch" value="0"/>
+                                    <setting name="qos" value="5"/>
+                                    <setting name="aging" value="8"/>
+                                    <setting name="slaveHitNoswitch" value="0x40"/>
+                                    <setting name="slaveHitSwitch" value="0x10"/>
                                  </struct>
                               </struct>
                               <setting name="queuebEnable" value="false"/>
                               <struct name="queuebWeight">
                                  <setting name="structORvalue" value="structure"/>
                                  <struct name="queuebConfig">
-                                    <setting name="qos" value="0"/>
-                                    <setting name="aging" value="0"/>
-                                    <setting name="weightPagehit" value="0"/>
-                                    <setting name="slaveHitNoswitch" value="0"/>
-                                    <setting name="bankRotation" value="0"/>
+                                    <setting name="qos" value="5"/>
+                                    <setting name="aging" value="8"/>
+                                    <setting name="weightPagehit" value="0x60"/>
+                                    <setting name="slaveHitNoswitch" value="0x24"/>
+                                    <setting name="bankRotation" value="0x40"/>
                                  </struct>
                               </struct>
                            </struct>
@@ -856,24 +788,23 @@
                            <setting name="address" value="0x80000000"/>
                            <setting name="memsize_input" value="32MB"/>
                            <setting name="portSize" value="kSEMC_PortSize16Bit"/>
-                           <setting name="burstLen" value="kSEMC_Sdram_BurstLen1"/>
+                           <setting name="burstLen" value="kSEMC_Sdram_BurstLen8"/>
                            <setting name="columnAddrBitNum" value="kSEMC_SdramColunm_9bit"/>
                            <setting name="casLatency" value="kSEMC_LatencyThree"/>
-                           <setting name="tPrecharge2Act_Ns" value="18"/>
-                           <setting name="tAct2ReadWrite_Ns" value="18"/>
+                           <setting name="tPrecharge2Act_Ns" value="36"/>
+                           <setting name="tAct2ReadWrite_Ns" value="36"/>
                            <setting name="tRefreshRecovery_Ns" value="127"/>
-                           <setting name="tWriteRecovery_Ns" value="12"/>
-                           <setting name="tCkeOff_Ns" value="42"/>
-                           <setting name="tAct2Prechage_Ns" value="42"/>
-                           <setting name="tSelfRefRecovery_Ns" value="67"/>
-                           <setting name="tRefresh2Refresh_Ns" value="60"/>
-                           <setting name="tAct2Act_Ns" value="60"/>
-                           <setting name="tPrescalePeriod_Ns" value="160"/>
+                           <setting name="tWriteRecovery_Ns" value="20"/>
+                           <setting name="tCkeOff_Ns" value="70"/>
+                           <setting name="tAct2Prechage_Ns" value="90"/>
+                           <setting name="tSelfRefRecovery_Ns" value="255"/>
+                           <setting name="tRefresh2Refresh_Ns" value="120"/>
+                           <setting name="tAct2Act_Ns" value="12"/>
+                           <setting name="tPrescalePeriod_Ns" value="220"/>
                            <setting name="tIdleTimeout_Ns" value="0"/>
-                           <setting name="refreshPeriod_nsPerRow" value="64"/>
-                           <setting name="refreshUrgThreshold" value="64"/>
-                           <setting name="refreshBurstLen" value="1"/>
-                           <setting name="autofreshTimesEnum" value="0"/>
+                           <setting name="refreshPeriod_nsPerRow" value="73000"/>
+                           <setting name="refreshUrgThreshold" value="178000"/>
+                           <setting name="refreshBurstLen" value="5"/>
                         </struct>
                         <array name="sdramArray"/>
                      </config_set>

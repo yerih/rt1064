@@ -1,30 +1,37 @@
 
 
 
+
+
 #include "test_ram.h"
 
 
-#ifdef AUDIO_MIX_H_
-int16_t* ramVar = snareRam;
-#elif
-__NOINIT(RAM4) int16_t ramVar[PAD_SIZE_16BIT];
-#endif
-//__NOINIT(RAM4) int16_t snareRam[PAD_SIZE_16BIT];
 
-void test_ram()
+__NOINIT(RAM4) int16_t snareRam[TEST_RAM_SIZE];
+//__NOINIT(RAM5) int16_t snareRam[TEST_RAM_SIZE];
+
+
+void test_ram(int16_t* ram)
 {
-	printf("test_ram(): running...\r\n");
-	printf("Ram memset in value = -1\r\n");
-	memset(ramVar, -1, sizeof(PAD_SIZE_16BIT));
 	uint32_t i;
-	for(i = 0; i < PAD_SIZE_16BIT; i++)
+	bool result = false;
+	printf("test_ram(): testing RAM...\r\n");
+	snareRam[0] = 55;
+//	printf("ram = %lu\r\n", snareRam[0]);
+	for(i = 0; i < TEST_RAM_SIZE;i++)
+		snareRam[i] = 55;
+
+	for(i = 0; i < TEST_RAM_SIZE;i++)
 	{
-		printf("ramVar[%lu] = \r\n", i, ramVar[i]);
+		if(snareRam[i] != 55)
+		{
+			printf("test_ram(): failed in index = %lu\r\n", i);
+			result = true;
+			break;
+		}
 	}
-	printf("test_ram(): finished. i = %lu\r\n", i);
+	printf("The testing RAM result is: %s\r\n", result ? "failed":"Successful");
 }
-
-
 
 
 
