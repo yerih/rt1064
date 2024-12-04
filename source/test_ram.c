@@ -17,14 +17,12 @@ void test_ram(int16_t* ram)
 	bool result = false;
 	printf("test_ram(): testing RAM...\r\n");
 	snareRam[0] = 55;
-	printf("ram = %lu\r\n", snareRam[0]);
+//	printf("ram = %lu\r\n", snareRam[0]);
 	for(i = 0; i < TEST_RAM_SIZE;i++)
-//		ram[i] = 55;
 		snareRam[i] = 55;
 
 	for(i = 0; i < TEST_RAM_SIZE;i++)
 	{
-//		if(ram[i] != 55)
 		if(snareRam[i] != 55)
 		{
 			printf("test_ram(): failed in index = %lu\r\n", i);
