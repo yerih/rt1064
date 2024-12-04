@@ -8,6 +8,8 @@
 
 
 __NOINIT(RAM4) int16_t snareRam[TEST_RAM_SIZE];
+//__NOINIT(RAM5) int16_t snareRam[TEST_RAM_SIZE];
+
 
 void test_ram(int16_t* ram)
 {

@@ -5,6 +5,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include <peripherals.h>
 #include <stdio.h>
 #include <string.h>
 #include "fsl_sd.h"
@@ -45,7 +46,15 @@ int main(void)
     BOARD_InitDebugConsole();
     BOARD_InitPeripherals();
 
-    BOARD_InitSEMC();
+
+    CLOCK_InitSysPfd(kCLOCK_Pfd2, 29);
+    /* Set semc clock to 163.86 MHz */
+    CLOCK_SetMux(kCLOCK_SemcMux, 1);
+    CLOCK_SetDiv(kCLOCK_SemcDiv, 1);
+    CLOCK_SetMux(kCLOCK_SemcAltMux, 1);
+    status_t ret = BOARD_InitSEMC();
+    printf("\r\n\nSEMC init %s\r\n\n", ret ? "failed":"success");
+
 
 
     printf("Starting modules...\r\n");
@@ -100,6 +109,7 @@ status_t BOARD_InitSEMC(void)
     sdramconfig.refreshPeriod_nsPerRow = 64 * 1000000 / 8192; /* 64ms/8192 */
     sdramconfig.refreshUrgThreshold    = sdramconfig.refreshPeriod_nsPerRow;
     sdramconfig.refreshBurstLen        = 1;
+
     return SEMC_ConfigureSDRAM(SEMC, kSEMC_SDRAM_CS0, &sdramconfig, clockFrq);
 }
 
