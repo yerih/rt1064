@@ -58,6 +58,42 @@ component:
  * BOARD_InitPeripherals functional group
  **********************************************************************************************************************/
 /***********************************************************************************************************************
+ * DMA0 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'DMA0'
+- type: 'edma'
+- mode: 'basic'
+- custom_name_enabled: 'false'
+- type_id: 'edma_2.1.1'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'DMA0'
+- config_sets:
+  - fsl_edma:
+    - common_settings:
+      - enableContinuousLinkMode: 'true'
+      - enableHaltOnError: 'true'
+      - enableRoundRobinArbitration: 'false'
+      - enableDebugMode: 'false'
+    - dma_table:
+      - 0: []
+    - edma_channels: []
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+const edma_config_t DMA0_config = {
+  .enableContinuousLinkMode = true,
+  .enableHaltOnError = true,
+  .enableRoundRobinArbitration = false,
+  .enableDebugMode = false
+};
+
+/* Empty initialization function (commented out)
+static void DMA0_init(void) {
+} */
+
+/***********************************************************************************************************************
  * NVIC initialization code
  **********************************************************************************************************************/
 /* clang-format off */
@@ -252,16 +288,146 @@ static void SEMC_init(void) {
 } */
 
 /***********************************************************************************************************************
+ * SAI1 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'SAI1'
+- type: 'sai'
+- mode: 'edma'
+- custom_name_enabled: 'false'
+- type_id: 'sai_2.1.4'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'SAI1'
+- config_sets:
+  - fsl_sai:
+    - usage: 'playback'
+    - whole:
+      - tx_group:
+        - sai_config:
+          - protocol: 'kSAI_BusI2S'
+          - syncMode: 'kSAI_ModeAsync'
+          - bitClockSource: 'kSAI_BclkSourceBusclk'
+          - bitClockSourceFreq: 'ClocksTool_DefaultInit'
+        - transfer_format:
+          - sampleRate_Hz: 'kSAI_SampleRate48KHz'
+          - bitWidth: 'kSAI_WordWidth8bits'
+          - stereo: 'kSAI_Stereo'
+          - isFrameSyncCompact: 'false'
+          - watermark: '0'
+          - channelMask: 'kSAI_Channel0Mask'
+        - edma_group:
+          - enable_edma_channel: 'true'
+          - edma_channel:
+            - uid: '1733502339708'
+            - eDMAn: '0'
+            - eDMA_source: 'kDmaRequestMuxSai1Tx'
+            - enableTriggerPIT: 'false'
+            - init_channel_priority: 'false'
+            - edma_channel_Preemption:
+              - enableChannelPreemption: 'false'
+              - enablePreemptAbility: 'false'
+              - channelPriority: '0'
+            - enable_custom_name: 'false'
+          - sai_edma_handle:
+            - enable_custom_name: 'false'
+            - init_callback: 'false'
+            - callback_fcn: ''
+            - user_data: ''
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+/* SAI1 Tx configuration */
+//const sai_config_t SAI1_tx_config = {
+//  .protocol = kSAI_BusI2S,
+//  .syncMode = kSAI_ModeAsync,
+//  /* Unused .mclkSource, MCLK pin is set to be external clock or setting is not available on this device */
+////  .mclkSource = kSAI_MclkSourceSysclk,
+//  .bclkSource = kSAI_BclkSourceBusclk,
+//  .masterSlave = kSAI_Master
+//};
+
+sai_transceiver_t SAI1_Tx_config = {
+  .masterSlave = kSAI_Master,
+  .bitClock = {
+    .bclkSrcSwap = false,
+    .bclkSource = kSAI_BclkSourceBusclk,
+    .bclkPolarity = kSAI_PolarityActiveLow,
+    .bclkInputDelay = false
+  },
+  .frameSync = {
+    .frameSyncWidth = 16U,
+    .frameSyncPolarity = kSAI_PolarityActiveLow,
+    .frameSyncEarly = true,
+  },
+  .syncMode = kSAI_ModeAsync,
+  .channelMask = kSAI_Channel0Mask,
+  .startChannel = 0U,
+  .endChannel = 0U,
+  .channelNums = 1U,
+  .serialData = {
+    .dataMode = kSAI_DataPinStateTriState,
+    .dataWord0Length = (uint8_t)kSAI_WordWidth16bits,
+    .dataWordNLength = (uint8_t)kSAI_WordWidth16bits,
+    .dataWordLength = (uint8_t)kSAI_WordWidth16bits,
+    .dataOrder = kSAI_DataMSB,
+    .dataFirstBitShifted = 16U,
+    .dataWordNum = 2U,
+    .dataMaskedWord = 0x0U
+  },
+  .fifo = {
+    .fifoWatermark = 16U,
+    .fifoCombine = kSAI_FifoCombineDisabled,
+    .fifoPacking = kSAI_FifoPackingDisabled,
+    .fifoContinueOneError = false
+  }
+};
+
+/* SAI1 Tx  transfer format */
+sai_transfer_format_t SAI1_tx_format = {
+  .sampleRate_Hz = kSAI_SampleRate48KHz,
+  .bitWidth = kSAI_WordWidth16bits,
+  .stereo = kSAI_Stereo,
+//  .masterClockHz = 1UL,
+  .watermark = 0U,
+  .channel = 0U,
+  .protocol = kSAI_BusI2S,
+  .isFrameSyncCompact = false
+};
+edma_handle_t SAI1_TX_Handle;
+sai_edma_handle_t SAI1_SAI_Tx_eDMA_Handle;
+
+static void SAI1_init(void) {
+  /* Set the source kDmaRequestMuxSai1Tx request in the DMAMUX */
+  DMAMUX_SetSource(SAI1_TX_DMAMUX_BASEADDR, SAI1_TX_DMA_CHANNEL, SAI1_TX_DMA_REQUEST);
+  /* Enable the channel 0 in the DMAMUX */
+  DMAMUX_EnableChannel(SAI1_TX_DMAMUX_BASEADDR, SAI1_TX_DMA_CHANNEL);
+  /* Create the eDMA SAI1_TX_Handle handle */
+  EDMA_CreateHandle(&SAI1_TX_Handle, SAI1_TX_DMA_BASEADDR, SAI1_TX_DMA_CHANNEL);
+  /* Initialize SAI clock gate */
+  SAI_Init(SAI1_PERIPHERAL);
+  /* Create the SAI Tx eDMA handle */
+  SAI_TransferTxCreateHandleEDMA(SAI1_PERIPHERAL, &SAI1_SAI_Tx_eDMA_Handle, NULL, NULL, &SAI1_TX_Handle);
+  /* Configures SAI Tx sub-module functionality */
+  SAI_TransferTxSetConfigEDMA(SAI1_PERIPHERAL, &SAI1_SAI_Tx_eDMA_Handle, &SAI1_Tx_config);
+  /* Set up SAI Tx bitclock rate by calculation of divider. */
+  SAI_TxSetBitClockRate(SAI1_PERIPHERAL, SAI1_TX_BCLK_SOURCE_CLOCK_HZ, SAI1_TX_SAMPLE_RATE, SAI1_TX_WORD_WIDTH, SAI1_TX_WORDS_PER_FRAME);
+}
+
+/***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
 void BOARD_InitPeripherals(void)
 {
   /* Global initialization */
+  DMAMUX_Init(DMA0_DMAMUX_BASEADDR);
+  EDMA_Init(DMA0_DMA_BASEADDR, &DMA0_config);
   /* GPIO adapter pre-initialization */
   HAL_GpioPreInit();
 
   /* Initialize components */
   GPIO1_init();
+  SAI1_init();
 }
 
 /***********************************************************************************************************************

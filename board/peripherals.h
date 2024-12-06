@@ -9,9 +9,14 @@
 /***********************************************************************************************************************
  * Included files
  **********************************************************************************************************************/
+#include "fsl_edma.h"
+#include "fsl_dmamux.h"
 #include "fsl_common.h"
 #include "fsl_adapter_gpio.h"
 #include "pin_mux.h"
+#include "fsl_sai.h"
+#include "fsl_sai_edma.h"
+#include "fsl_clock.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -21,6 +26,10 @@ extern "C" {
  * Definitions
  **********************************************************************************************************************/
 /* Definitions for BOARD_InitPeripherals functional group */
+/* Used DMA device. */
+#define DMA0_DMA_BASEADDR DMA0
+/* Associated DMAMUX device that is used for muxing of requests. */
+#define DMA0_DMAMUX_BASEADDR DMAMUX
 /* gpio_io, 05 signal defines */
 /* Definition of the pin direction */
 #define BOARD_CAN_STBY_PIN_DIRECTION kHAL_GpioDirectionIn
@@ -34,12 +43,34 @@ extern "C" {
 /* BOARD_InitPeripherals defines for SEMC */
 /* Definition of peripheral ID. */
 #define SEMC_PERIPHERAL SEMC
+/* Definition of peripheral ID */
+#define SAI1_PERIPHERAL SAI1
+/* Leader clock source frequency used for counting the leader clock divider in the Tx SetFormat type functions, not available on all devices. */
+#define SAI1_TX_MCLK_SOURCE_CLOCK_HZ 48001UL
+/* Bit clock source frequency used for counting the bit clock divider in the Tx SetFormat type functions. */
+#define SAI1_TX_BCLK_SOURCE_CLOCK_HZ 150000000UL
+/* SAI1 eDMA source request. */
+#define SAI1_TX_DMA_REQUEST kDmaRequestMuxSai1Tx
+/* Selected eDMA channel number. */
+#define SAI1_TX_DMA_CHANNEL 0
+/* DMAMUX device that is used for muxing of the request. */
+#define SAI1_TX_DMAMUX_BASEADDR DMAMUX
+/* Used DMA device. */
+#define SAI1_TX_DMA_BASEADDR DMA0
+#define SAI1_TX_SAMPLE_RATE 48000UL
+#define SAI1_TX_WORD_WIDTH 16U
+#define SAI1_TX_WORDS_PER_FRAME 2U
 
 /***********************************************************************************************************************
  * Global variables
  **********************************************************************************************************************/
+extern const edma_config_t DMA0_config;
 extern GPIO_HANDLE_DEFINE(BOARD_CAN_STBY_handle);
 extern GPIO_HANDLE_DEFINE(BOARD_LED_BOARD_handle);
+extern const sai_config_t SAI1_tx_config;
+extern sai_transfer_format_t SAI1_tx_format;
+extern edma_handle_t SAI1_TX_Handle;
+extern sai_edma_handle_t SAI1_SAI_Tx_eDMA_Handle;
 
 /***********************************************************************************************************************
  * Global functions

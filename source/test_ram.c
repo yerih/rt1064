@@ -6,8 +6,9 @@
 #include "test_ram.h"
 
 
-
+#ifndef SNARE_RAM
 __NOINIT(RAM4) int16_t snareRam[TEST_RAM_SIZE];
+#endif
 //__NOINIT(RAM5) int16_t snareRam[TEST_RAM_SIZE];
 
 

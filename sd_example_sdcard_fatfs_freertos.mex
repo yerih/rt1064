@@ -22,7 +22,7 @@
       <generate_registers_defines>false</generate_registers_defines>
    </preferences>
    <tools>
-      <pins name="Pins" version="16.0" enabled="true" update_project_code="true">
+      <pins name="Pins" version="16.0" enabled="true" update_project_code="false">
          <generated_project_files>
             <file path="board/pin_mux.c" update_enabled="true"/>
             <file path="board/pin_mux.h" update_enabled="true"/>
@@ -161,7 +161,7 @@
             </function>
          </functions_list>
       </pins>
-      <clocks name="Clocks" version="14.0" enabled="true" update_project_code="true">
+      <clocks name="Clocks" version="14.0" enabled="true" update_project_code="false">
          <generated_project_files>
             <file path="board/clock_config.c" update_enabled="true"/>
             <file path="board/clock_config.h" update_enabled="true"/>
@@ -455,7 +455,7 @@
             </clock_configuration>
          </clock_configurations>
       </clocks>
-      <dcdx name="DCDx" version="3.0" enabled="true" update_project_code="true">
+      <dcdx name="DCDx" version="3.0" enabled="true" update_project_code="false">
          <generated_project_files>
             <file path="board/dcd.c" update_enabled="true"/>
             <file path="board/dcd.h" update_enabled="true"/>
@@ -624,6 +624,26 @@
                   <data type="Version" maxValue="2.6.9">2.5.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.edma" description="EDMA Driver is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.edma" description="An unsupported version of the EDMA Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">2.1.1</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.sai" description="SAI Driver is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.sai" description="An unsupported version of the SAI Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">2.1.4</data>
+               </feature>
+            </dependency>
             <dependency resourceType="Tool" resourceId="Pins" description="The Pins tool is required by the Peripherals tool, but it is disabled." problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data>true</data>
@@ -653,6 +673,46 @@
                   <dependency resourceType="PinSignal" resourceId="GPIO1.gpio_io.09" description="Signal gpio_io, 09 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="routed" evaluation="">
                         <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.dmamux" description="The fsl_dmamux driver is missing in the project (required for the eDMA)." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="enabled" evaluation="equal">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.dmamux" description="The compatible version of the fsl_dmamux driver is not available in the project (required for the eDMA)." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="version" evaluation="compatible">
+                        <data type="Version">2.0.2</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="SAI1.i2s_txd0" description="SAI1.TX DATA 0 pin needs to be routed" problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="equal">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="SAI1.i2s_tclk" description="SAI1.TX BCLK pin needs to be routed" problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="equal">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="SAI1.i2s_tfs" description="SAI1.TX SYNC pin needs to be routed" problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="equal">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.sai_edma" description="The fsl_sai_edma driver is missing in the project (required for the eDMA mode)." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="enabled" evaluation="equal">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.sai_edma" description="The compatible version of the fsl_sai_edma driver is not available in the project (required for the eDMA mode)." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="version" evaluation="compatible">
+                        <data type="Version">2.1.4</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="ClockOutput" resourceId="IPG_CLK_ROOT" description="IPG_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="frequency" evaluation="greaterThan">
+                        <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
                </dependencies>
@@ -777,6 +837,69 @@
                            <setting name="refreshBurstLen" value="5"/>
                         </struct>
                         <array name="sdramArray"/>
+                     </config_set>
+                  </instance>
+                  <instance name="DMA0" uuid="d91bf009-a06c-47a1-a2a0-7a4606bf56b4" type="edma" type_id="edma_2.1.1" mode="basic" peripheral="DMA0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="fsl_edma">
+                        <struct name="common_settings">
+                           <setting name="enableContinuousLinkMode" value="true"/>
+                           <setting name="enableHaltOnError" value="true"/>
+                           <setting name="enableRoundRobinArbitration" value="false"/>
+                           <setting name="enableDebugMode" value="false"/>
+                        </struct>
+                        <array name="dma_table">
+                           <struct name="0"/>
+                        </array>
+                        <array name="edma_channels"/>
+                     </config_set>
+                  </instance>
+                  <instance name="SAI1" uuid="5d77495c-6647-4773-8bb8-7b56a31c76a3" type="sai" type_id="sai_2.1.4" mode="edma" peripheral="SAI1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="fsl_sai">
+                        <setting name="usage" value="playback"/>
+                        <struct name="whole">
+                           <struct name="tx_group">
+                              <struct name="sai_config">
+                                 <setting name="protocol" value="kSAI_BusI2S"/>
+                                 <setting name="syncMode" value="kSAI_ModeAsync"/>
+                                 <setting name="bitClockSource" value="kSAI_BclkSourceBusclk"/>
+                                 <setting name="bitClockSourceFreq" value="ClocksTool_DefaultInit"/>
+                              </struct>
+                              <struct name="transfer_format">
+                                 <setting name="sampleRate_Hz" value="kSAI_SampleRate48KHz"/>
+                                 <setting name="bitWidth" value="kSAI_WordWidth16bits"/>
+                                 <setting name="stereo" value="kSAI_Stereo"/>
+                                 <setting name="isFrameSyncCompact" value="false"/>
+                                 <setting name="watermark" value="0"/>
+                                 <set name="channelMask">
+                                    <selected>
+                                       <id>kSAI_Channel0Mask</id>
+                                    </selected>
+                                 </set>
+                              </struct>
+                              <struct name="edma_group">
+                                 <setting name="enable_edma_channel" value="true"/>
+                                 <struct name="edma_channel">
+                                    <setting name="uid" value="1733502339708"/>
+                                    <setting name="eDMAn" value="0"/>
+                                    <setting name="eDMA_source" value="kDmaRequestMuxSai1Tx"/>
+                                    <setting name="enableTriggerPIT" value="false"/>
+                                    <setting name="init_channel_priority" value="false"/>
+                                    <struct name="edma_channel_Preemption">
+                                       <setting name="enableChannelPreemption" value="false"/>
+                                       <setting name="enablePreemptAbility" value="false"/>
+                                       <setting name="channelPriority" value="0"/>
+                                    </struct>
+                                    <setting name="enable_custom_name" value="false"/>
+                                 </struct>
+                                 <struct name="sai_edma_handle">
+                                    <setting name="enable_custom_name" value="false"/>
+                                    <setting name="init_callback" value="false"/>
+                                    <setting name="callback_fcn" value=""/>
+                                    <setting name="user_data" value=""/>
+                                 </struct>
+                              </struct>
+                           </struct>
+                        </struct>
                      </config_set>
                   </instance>
                </instances>
